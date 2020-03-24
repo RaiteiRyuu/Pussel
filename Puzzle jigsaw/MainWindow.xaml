@@ -230,7 +230,7 @@
             </Grid>
         </Grid>
         <Border BorderThickness="2" BorderBrush="#FF000000" VerticalAlignment="Center" HorizontalAlignment="Left" Height="429" Width="719" Margin="39,104,0,67">
-            <Image Name ="imgPhoto" HorizontalAlignment="Center" Height="429"  VerticalAlignment="Top" Width="719" Margin="-359,-2,355,-2"/>
+            <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Top" Width="719" Margin="-2"/>
         </Border>
         <StackPanel HorizontalAlignment="Left">
 
