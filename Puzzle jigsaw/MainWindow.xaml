@@ -6,8 +6,12 @@
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
 <<<<<<< HEAD
+<<<<<<< HEAD
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+=======
+        Title="PuzzleGame" Height="600" Width="800" Loaded="Window_Loaded">
+>>>>>>> 466efcb111d80a6eb9ade8a34f71bfae731b2e63
 =======
         Title="PuzzleGame" Height="600" Width="800" Loaded="Window_Loaded">
 >>>>>>> 466efcb111d80a6eb9ade8a34f71bfae731b2e63
@@ -93,6 +97,9 @@
                   Width="65" Background="White" Margin="0,0,0,320" >
 =======
                   Width="65" Background="White" Margin="0,0,0,336" >
+<<<<<<< HEAD
+>>>>>>> 466efcb111d80a6eb9ade8a34f71bfae731b2e63
+=======
 >>>>>>> 466efcb111d80a6eb9ade8a34f71bfae731b2e63
 
                 <StackPanel x:Name="stack_panel">
@@ -238,6 +245,7 @@
             </Grid>
         </Grid>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Image Name ="imgPhoto" HorizontalAlignment="Left" Height="429" Margin="48,97,0,0" VerticalAlignment="Top" Width="719"/>
         <StackPanel HorizontalAlignment="Left">
 
@@ -246,12 +254,17 @@
         </StackPanel>
 
 =======
+=======
+>>>>>>> 466efcb111d80a6eb9ade8a34f71bfae731b2e63
         <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
         <Border BorderThickness="2" BorderBrush="#FF000000" VerticalAlignment="Top" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" Width="405">
             <Image Name ="imgPhoto" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" VerticalAlignment="Top" Width="402"/>
         </Border>
         <Button Content="Load Puzzle" HorizontalAlignment="Left" Margin="707,307,0,0" VerticalAlignment="Top" Width="75" Click="onclick"/>
         <Button Content="Save Puzzle" HorizontalAlignment="Left" Margin="707,268,0,0" VerticalAlignment="Top" Width="75"/>
+<<<<<<< HEAD
+>>>>>>> 466efcb111d80a6eb9ade8a34f71bfae731b2e63
+=======
 >>>>>>> 466efcb111d80a6eb9ade8a34f71bfae731b2e63
     </Grid>
 </Window>
