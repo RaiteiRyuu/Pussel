@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace Puzzle_jigsaw
 {
@@ -27,21 +26,6 @@ namespace Puzzle_jigsaw
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            DispatcherTimer dt = new DispatcherTimer();
-            dt.Interval = TimeSpan.FromSeconds(1);
-            dt.Tick += dtTicker;
-            dt.Start();
-        }
-
-        private int increment = 0;
-        private void dtTicker(object sender, EventArgs e)
-        {
-            increment++;
-            TimerLabel.Content = increment.ToString();
-        }
-
         private void onclick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open_File = new OpenFileDialog();
@@ -49,6 +33,21 @@ namespace Puzzle_jigsaw
             if (open_File.ShowDialog() == true)
             {
                 imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
+            }
+        }
+
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //ToolTip visibility
+            if (toggle_Btn.IsChecked == true)
+            {
+                tt_puzzle.Visibility = Visibility.Collapsed;
+                tt_Folder.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                tt_puzzle.Visibility = Visibility.Visible;
+                tt_Folder.Visibility = Visibility.Visible;
             }
         }
     }
