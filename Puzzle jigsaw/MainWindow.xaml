@@ -1,0 +1,228 @@
+﻿<Window x:Class="Puzzle_jigsaw.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Puzzle_jigsaw"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+
+    <Window.Resources>
+        <ImageBrush x:Key="tb_mouse_over"
+                    ImageSource="Assets/menu_highlight.png"/>
+        <Style TargetType="ToolTip" x:Key="tt_style">
+            <Setter Property="Placement" Value="Left"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Margin" Value="20,0,0,0"></Setter>
+            <Setter Property="Background" Value="#4A5668"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="PlacementRectangle" Value="60,0,0,0"></Setter>
+            <Setter Property="HorizontalOffset" Value="-50"></Setter>
+            <Setter Property="VerticalOffset" Value="6"></Setter>
+            <Setter Property="HasDropShadow" Value="True"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            
+            
+        </Style>
+        <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}">
+                                </Setter>
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}">
+                                    
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsChecked"
+                                     Value="true">
+                                <Setter Property="Background" TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}">
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}">
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid Background="SandyBrown">
+            <!-- Code for Uploading background image-->
+
+
+
+
+
+
+
+            
+            
+            <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
+                  Width="65" Background="White" Margin="0,0,0,336" >
+                
+                <StackPanel x:Name="stack_panel">
+                    <Grid Height="90">
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="73,-20,0,0"
+                                   Text="M E N U"
+                                   Foreground="White"
+                                   FontSize="22"
+                                   Background="Transparent"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center">
+                                
+                            
+                        </TextBlock>
+                        <ToggleButton x:Name="toggle_Btn" Grid.Column="0"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="18,-20,0,0"
+                                      Height="30" Width="30"
+                                      BorderThickness="0"
+                                      Style="{StaticResource tb_style}">
+                            <!--//add button background//-->
+                            <ToggleButton.Background>
+                                <ImageBrush ImageSource="Assets/menu.png"
+                                            Stretch="None"/>
+                            </ToggleButton.Background>
+                                   <!--//toggle button //-->
+                            <ToggleButton.Triggers>
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="HideStackPanel">
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="navigation_panel"
+                                                Storyboard.TargetProperty ="Width"
+                                                BeginTime="0:0:0"
+                                                From="230" To=" 65"
+                                                Duration="0:0:0.2">
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="ShowStackPanel">
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="navigation_panel"
+                                                Storyboard.TargetProperty="Width"
+                                                BeginTime="0:0:0"
+                                                From="65" To="230"
+                                                Duration="0:0:0.3">
+                                                
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                    
+                                </EventTrigger>
+                            </ToggleButton.Triggers>
+                        </ToggleButton>
+                    </Grid>
+                    
+                    <!--menu list-->
+                    <ListView x:Name="LV" Background="Transparent"
+                              BorderBrush="Transparent"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        
+                        <!--Puzzle-->
+                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="Assets/puzzle2.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0" Height="40">
+                                </Image>
+                                <TextBlock Text="PuzzlePieces"
+                                           Margin="25,0,0,0">
+                                </TextBlock>
+                            </StackPanel>
+
+                            <ListViewItem.ToolTip>
+                                <ToolTip x:Name="tt_puzzle"
+                                         Content="Puzzle"
+                                         Style="{StaticResource tt_style}"></ToolTip>
+                            </ListViewItem.ToolTip>
+                        </ListViewItem>
+                        
+                        <!-- Folder-->
+                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="Assets/folder.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0" Height="40">
+                                </Image>
+                                <TextBlock Text="Folder"
+                                           Margin="25,0,0,0">
+                                </TextBlock>
+                            </StackPanel>
+
+                            <ListViewItem.ToolTip>
+                                <ToolTip x:Name="tt_Folder"
+                                         Content="Folder"
+                                         Style="{StaticResource tt_style}"></ToolTip>
+                            </ListViewItem.ToolTip>
+                        </ListViewItem>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <Border x:Name="Bd" Height="50" BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Background="{TemplateBinding Background}"
+                                                    Padding="{TemplateBinding Padding}"
+                                                    SnapsToDevicePixels="True">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                    
+                                                </ContentPresenter>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsMouseOver" Value="True"></Condition>
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="Background" TargetName="Bd"
+                                                            Value="#404D5B">
+                                                    </Setter>
+                                                    <Setter Property="BorderBrush" TargetName="Bd"
+                                                            Value="#404d5B">
+                                                        
+                                                    </Setter>
+                                                </MultiTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Image Name ="imgPhoto" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" VerticalAlignment="Top" Width="402"/>
+        <Button Content="Load Puzzle" HorizontalAlignment="Left" Margin="707,307,0,0" VerticalAlignment="Top" Width="75" Click="onclick"/>
+        <Button Content="Save Puzzle" HorizontalAlignment="Left" Margin="707,268,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>
