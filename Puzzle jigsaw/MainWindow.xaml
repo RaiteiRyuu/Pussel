@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="PuzzleGame" Height="600" Width="800">
 
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over"
