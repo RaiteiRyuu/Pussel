@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Puzzle_jigsaw
 {
@@ -24,8 +25,22 @@ namespace Puzzle_jigsaw
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimer dt = new DispatcherTimer();
+            dt.Interval = TimeSpan.FromSeconds(1);
+            dt.Tick += dtTicker;
+            dt.Start();
+        }
+
+        private int increment = 0;
+        private void dtTicker(object sender, EventArgs e)
+        {
+            increment++;
+            TimerLabel.Content = increment.ToString();
         }
 
 
