@@ -26,6 +26,9 @@ namespace Puzzle_jigsaw
             InitializeComponent();
         }
 
+        }
+
+
         private void onclick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open_File = new OpenFileDialog();
