@@ -239,6 +239,5 @@
         </StackPanel>
 
         <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
-        <!--<Image Name ="imgPhoto" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" VerticalAlignment="Top" Width="402"/>-->
     </Grid>
 </Window>
