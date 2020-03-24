@@ -109,5 +109,8 @@
   <ItemGroup>
     <Resource Include="Assets\save.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Textures\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
