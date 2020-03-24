@@ -226,6 +226,7 @@
         </Border>
         <Button Content="Load Puzzle" HorizontalAlignment="Left" Margin="707,307,0,0" VerticalAlignment="Top" Width="75" Click="onclick"/>
         <Button Content="Save Puzzle" HorizontalAlignment="Left" Margin="707,268,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="New Puzzle" HorizontalAlignment="Left" Margin="707,231,0,0" VerticalAlignment="Top" Width="75" Click="onclick"/>
 
     </Grid>
 </Window>
