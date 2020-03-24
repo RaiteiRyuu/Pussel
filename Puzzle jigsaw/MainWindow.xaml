@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
-        Title="PuzzleGame" Height="600" Width="800">
+        Title="PuzzleGame" Height="600" Width="800" Loaded="Window_Loaded">
 
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over"
@@ -220,7 +220,10 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <Image Name ="imgPhoto" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" VerticalAlignment="Top" Width="402"/>
+        <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+        <Border BorderThickness="2" BorderBrush="#FF000000" VerticalAlignment="Top" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" Width="405">
+            <Image Name ="imgPhoto" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" VerticalAlignment="Top" Width="402"/>
+        </Border>
         <Button Content="Load Puzzle" HorizontalAlignment="Left" Margin="707,307,0,0" VerticalAlignment="Top" Width="75" Click="onclick"/>
         <Button Content="Save Puzzle" HorizontalAlignment="Left" Margin="707,268,0,0" VerticalAlignment="Top" Width="75"/>
 
