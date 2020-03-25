@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,8 @@ namespace Puzzle_jigsaw
         public MainWindow()
         {
             InitializeComponent();
-            
+
+   
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -61,12 +63,23 @@ namespace Puzzle_jigsaw
             {
                 tt_puzzle.Visibility = Visibility.Collapsed;
                 tt_Folder.Visibility = Visibility.Collapsed;
-            }
+        }
             else
             {
                 tt_puzzle.Visibility = Visibility.Visible;
                 tt_Folder.Visibility = Visibility.Visible;
             }
+}
+
+        private void mouseclick(object sender, MouseButtonEventArgs e)
+        {
+            Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
+            popupPuzzleWindow.Show();
+        }
+
+        private void Close(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
