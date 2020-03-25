@@ -1,0 +1,18 @@
+﻿<Window x:Class="Puzzle_jigsaw.Puzzle_Pieces"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Puzzle_jigsaw"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="" Height="400" Width="400" Background="SandyBrown">
+    <Grid>
+        <Grid>
+            <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
+                <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

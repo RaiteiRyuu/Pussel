@@ -70,5 +70,11 @@ namespace Puzzle_jigsaw
                 tt_Folder.Visibility = Visibility.Visible;
             }
 }
+
+        private void mouseclick(object sender, MouseButtonEventArgs e)
+        {
+            Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
+            popupPuzzleWindow.Show();
+        }
     }
 }
