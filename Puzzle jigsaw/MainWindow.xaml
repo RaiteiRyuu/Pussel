@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
-        Title="PuzzleGame" Height="600" Width="800" Loaded="Window_Loaded">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over"
@@ -13,7 +14,7 @@
         <Style TargetType="ToolTip" x:Key="tt_style">
             <Setter Property="Placement" Value="Left"></Setter>
             <Setter Property="Height" Value="40"></Setter>
-            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Width" Value="120"></Setter>
             <Setter Property="Margin" Value="20,0,0,0"></Setter>
             <Setter Property="Background" Value="#4A5668"></Setter>
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
@@ -24,8 +25,8 @@
             <Setter Property="VerticalOffset" Value="6"></Setter>
             <Setter Property="HasDropShadow" Value="True"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-            
-            
+
+
         </Style>
         <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
             <Setter Property="Template">
@@ -45,7 +46,7 @@
                                 <Setter Property="BorderBrush"
                                         TargetName="border"
                                         Value="{StaticResource tb_mouse_over}">
-                                    
+
                                 </Setter>
                             </Trigger>
                             <Trigger Property="IsChecked"
@@ -64,7 +65,15 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid Background="SandyBrown">
+        <Grid>
+            <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
+                <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"/>
+            </Grid>
+        </Grid>
+
+
+        <Grid Background="SandyBrown" Margin="0,51,0,0">
             <!-- Code for Uploading background image-->
 
 
@@ -73,15 +82,15 @@
 
 
 
-            
-            
+
+
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
-                  Width="65" Background="White" Margin="0,0,0,336" >
-                
+                  Width="65" Background="White" Margin="0,0,0,320" >
+
                 <StackPanel x:Name="stack_panel">
                     <Grid Height="90">
                         <TextBlock Grid.Row="1"
-                                   Grid.Column="0"
+                                   Grid.Column="1"
                                    Margin="73,-20,0,0"
                                    Text="M E N U"
                                    Foreground="White"
@@ -89,8 +98,8 @@
                                    Background="Transparent"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center">
-                                
-                            
+
+
                         </TextBlock>
                         <ToggleButton x:Name="toggle_Btn" Grid.Column="0"
                                       VerticalAlignment="Center"
@@ -104,7 +113,7 @@
                                 <ImageBrush ImageSource="Assets/menu.png"
                                             Stretch="None"/>
                             </ToggleButton.Background>
-                                   <!--//toggle button //-->
+                            <!--//toggle button //-->
                             <ToggleButton.Triggers>
                                 <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                     <BeginStoryboard>
@@ -129,25 +138,25 @@
                                                 BeginTime="0:0:0"
                                                 From="65" To="230"
                                                 Duration="0:0:0.3">
-                                                
+
                                             </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
-                                    
+
                                 </EventTrigger>
                             </ToggleButton.Triggers>
                         </ToggleButton>
                     </Grid>
-                    
+
                     <!--menu list-->
                     <ListView x:Name="LV" Background="Transparent"
                               BorderBrush="Transparent"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        
+
                         <!--Puzzle-->
                         <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
                             <StackPanel Orientation="Horizontal" Width="230">
-                                <Image Source="Assets/puzzle2.png"
+                                <Image Source="Assets/puzzle.png"
                                        Stretch="None"
                                        Margin="12,0,0,0" Height="40">
                                 </Image>
@@ -158,11 +167,11 @@
 
                             <ListViewItem.ToolTip>
                                 <ToolTip x:Name="tt_puzzle"
-                                         Content="Puzzle"
+                                         Content="Puzzle Pieces"
                                          Style="{StaticResource tt_style}"></ToolTip>
                             </ListViewItem.ToolTip>
                         </ListViewItem>
-                        
+
                         <!-- Folder-->
                         <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
                             <StackPanel Orientation="Horizontal" Width="230">
@@ -194,7 +203,7 @@
                                                 <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                                    
+
                                                 </ContentPresenter>
                                             </Border>
                                             <ControlTemplate.Triggers>
@@ -207,7 +216,7 @@
                                                     </Setter>
                                                     <Setter Property="BorderBrush" TargetName="Bd"
                                                             Value="#404d5B">
-                                                        
+
                                                     </Setter>
                                                 </MultiTrigger>
                                             </ControlTemplate.Triggers>
@@ -220,12 +229,15 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
-        <Border BorderThickness="2" BorderBrush="#FF000000" VerticalAlignment="Top" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" Width="405">
-            <Image Name ="imgPhoto" HorizontalAlignment="Left" Height="288" Margin="72,39,0,0" VerticalAlignment="Top" Width="402"/>
+        <Border BorderThickness="2" BorderBrush="#FF000000" VerticalAlignment="Center" HorizontalAlignment="Left" Height="429" Width="719" Margin="39,104,0,67">
+            <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Top" Width="719" Margin="-2"/>
         </Border>
-        <Button Content="Load Puzzle" HorizontalAlignment="Left" Margin="707,307,0,0" VerticalAlignment="Top" Width="75" Click="onclick"/>
-        <Button Content="Save Puzzle" HorizontalAlignment="Left" Margin="707,268,0,0" VerticalAlignment="Top" Width="75"/>
+        <StackPanel HorizontalAlignment="Left">
 
+            <Button Content="Save" HorizontalAlignment="Left" Margin="839,302,0,0" VerticalAlignment="Top" Width="55" Height="22" FontSize="10" />
+            <Button Content="Load" HorizontalAlignment="Left" Margin="839,10,0,0" VerticalAlignment="Top" Width="55" Click="onclick" Height="22" FontSize="10" />
+        </StackPanel>
+
+        <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
     </Grid>
 </Window>
