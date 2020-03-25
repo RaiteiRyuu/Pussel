@@ -98,8 +98,6 @@
                                    Background="Transparent"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center">
-
-
                         </TextBlock>
                         <ToggleButton x:Name="toggle_Btn" Grid.Column="0"
                                       VerticalAlignment="Center"
@@ -108,7 +106,7 @@
                                       Height="30" Width="30"
                                       BorderThickness="0"
                                       Style="{StaticResource tb_style}">
-                            <!--//add button background//-->
+                            //add button background//
                             <ToggleButton.Background>
                                 <ImageBrush ImageSource="Assets/menu.png"
                                             Stretch="None"/>
@@ -229,13 +227,14 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <Border BorderThickness="2" BorderBrush="#FF000000" VerticalAlignment="Center" HorizontalAlignment="Left" Height="429" Width="719" Margin="39,104,0,67">
-            <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Top" Width="719" Margin="-2"/>
+        <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="429" Width="719">
+            <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />
         </Border>
-        <StackPanel HorizontalAlignment="Left">
-
-            <Button Content="Save" HorizontalAlignment="Left" Margin="839,302,0,0" VerticalAlignment="Top" Width="55" Height="22" FontSize="10" />
-            <Button Content="Load" HorizontalAlignment="Left" Margin="839,10,0,0" VerticalAlignment="Top" Width="55" Click="onclick" Height="22" FontSize="10" />
+        <StackPanel>
+            <Grid Height="150" Width="50" Background="Transparent" Margin="300,300,-530,0">
+                <Button Content="Save" HorizontalAlignment="Left" Margin="-5,30" VerticalAlignment="Top" Width="55" Height="22" FontSize="10" />
+                <Button Content="Load" HorizontalAlignment="Left" Margin="-5" VerticalAlignment="Top" Width="55" Click="onclick" Height="22" FontSize="10" />
+            </Grid>
         </StackPanel>
 
         <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>

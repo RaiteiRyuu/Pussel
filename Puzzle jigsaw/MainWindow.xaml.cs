@@ -61,12 +61,12 @@ namespace Puzzle_jigsaw
             {
                 tt_puzzle.Visibility = Visibility.Collapsed;
                 tt_Folder.Visibility = Visibility.Collapsed;
-            }
+        }
             else
             {
                 tt_puzzle.Visibility = Visibility.Visible;
                 tt_Folder.Visibility = Visibility.Visible;
             }
-        }
+}
     }
 }
