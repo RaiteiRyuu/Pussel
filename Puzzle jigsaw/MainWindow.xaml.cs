@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,8 @@ namespace Puzzle_jigsaw
         public MainWindow()
         {
             InitializeComponent();
-            
+
+   
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
