@@ -23,5 +23,10 @@ namespace Puzzle_jigsaw
         {
             InitializeComponent();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

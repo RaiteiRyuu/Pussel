@@ -76,5 +76,10 @@ namespace Puzzle_jigsaw
             Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
             popupPuzzleWindow.Show();
         }
+
+        private void Close(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

@@ -88,7 +88,7 @@
             </Border>
 
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
-                  Width="65" Background="White" >
+                  Width="65" Background="GhostWhite" >
                 <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
 
                     <StackPanel x:Name="stack_panel">
@@ -248,6 +248,25 @@
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
 
+                            <!-- Templates-->
+                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="Close">
+                                <StackPanel Orientation="Horizontal" Width="230">
+                                    <Image Source="Assets/exit.png"
+                                           Stretch="None"
+                                           Margin="12,0,0,0" Height="40">
+                                    </Image>
+                                    <TextBlock Text="Templates"
+                                               Margin="25,0,0,0">
+                                    </TextBlock>
+                                </StackPanel>
+
+                                <ListViewItem.ToolTip>
+                                    <ToolTip x:Name="tt_Exit"
+                                             Content="Exit"
+                                             Style="{StaticResource tt_style}"></ToolTip>
+                                </ListViewItem.ToolTip>
+                            </ListViewItem>
+
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="Template">
@@ -288,12 +307,6 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-        <!--<StackPanel>
-            <Grid Height="150" Width="50" Background="Transparent" Margin="300,300,-530,0">
-                <Button Content="Save" HorizontalAlignment="Left" Margin="-5,30" VerticalAlignment="Top" Width="55" Height="22" FontSize="10" />
-                <Button Content="Load" HorizontalAlignment="Left" Margin="-5" VerticalAlignment="Top" Width="55" Click="onclick" Height="22" FontSize="10" />
-            </Grid>
-        </StackPanel>-->
 
         <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
     </Grid>
