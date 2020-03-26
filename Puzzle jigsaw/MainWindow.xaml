@@ -331,5 +331,6 @@
         </Grid>
 
         <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+
     </Grid>
 </Window>

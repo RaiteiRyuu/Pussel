@@ -43,8 +43,9 @@ namespace Puzzle_jigsaw
         {
             increment++;
             TimerLabel.Content = increment.ToString();
+            if (increment == 60)
+                increment = 0;
         }
-
 
         private void onclick(object sender, RoutedEventArgs e)
         {
@@ -90,6 +91,11 @@ namespace Puzzle_jigsaw
 
             FullImage popupFullImageWindow = new FullImage();
             popupFullImageWindow.Show();
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
