@@ -109,11 +109,13 @@
                                           Height="30" Width="30"
                                           BorderThickness="0"
                                           Style="{StaticResource tb_style}" RenderTransformOrigin="-0.033,0.9">
-                                //add button background//
+                                
+                                <!--//add button background//-->
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="Assets/menu.png"
                                                 Stretch="None"/>
                                 </ToggleButton.Background>
+                                
                                 <!--//toggle button //-->
                                 <ToggleButton.Triggers>
                                     <EventTrigger RoutedEvent="ToggleButton.Unchecked">
@@ -219,7 +221,7 @@
                                            Margin="12,0,0,0" Height="40">
                                     </Image>
                                     <TextBlock Text="Templates"
-                                               Margin="25,0,0,0">
+                                               Margin="20,0,0,0">
                                     </TextBlock>
                                 </StackPanel>
 
