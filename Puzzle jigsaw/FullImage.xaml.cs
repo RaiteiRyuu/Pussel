@@ -15,23 +15,14 @@ using System.Windows.Shapes;
 namespace Puzzle_jigsaw
 {
     /// <summary>
-    /// Interaction logic for Puzzle_Pieces.xaml
+    /// Interaction logic for FullImage.xaml
     /// </summary>
-    public partial class Puzzle_Pieces : Window
+    public partial class FullImage : Window
     {
-        public Puzzle_Pieces()
+        public FullImage()
         {
             InitializeComponent();
-        }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void okBtn(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

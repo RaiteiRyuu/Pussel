@@ -81,5 +81,15 @@ namespace Puzzle_jigsaw
         {
             Application.Current.Shutdown();
         }
+
+        private void clickOnFull_Image(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog open_File = new OpenFileDialog();
+            open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            //imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
+
+            FullImage popupFullImageWindow = new FullImage();
+            popupFullImageWindow.Show();
+        }
     }
 }
