@@ -14,7 +14,7 @@
                 <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
                 <materialDesign:PopupBox HorizontalAlignment="Right" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"/>
             </Grid>
-            <Grid Margin="12,90,6,0">
+            <Grid Margin="10,80,10,10">
 
 
                 <Button x:Name="Bricks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="20" BorderBrush="#FF7E7369">
