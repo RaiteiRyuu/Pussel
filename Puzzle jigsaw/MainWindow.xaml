@@ -69,6 +69,7 @@
             <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                 <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
                 <materialDesign:PopupBox HorizontalAlignment="Right" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"/>
+                
             </Grid>
         </Grid>
 
