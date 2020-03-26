@@ -86,10 +86,12 @@
       <DependentUpon>Backgrounds.xaml</DependentUpon>
     </Compile>
 
+
     <Page Include="FullImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
 
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -195,7 +197,9 @@
   <ItemGroup>
     <Resource Include="Textures\Purple.jpeg" />
 
+
     <Resource Include="Assets\load-puzzle.png" />
+
 
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
