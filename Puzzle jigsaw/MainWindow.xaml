@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
 
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over"
