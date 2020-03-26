@@ -91,5 +91,11 @@ namespace Puzzle_jigsaw
             FullImage popupFullImageWindow = new FullImage();
             popupFullImageWindow.Show();
         }
+
+        private void clickBackground(object sender, MouseButtonEventArgs e)
+        {
+            Backgrounds popupBackgroundWindow = new Backgrounds();
+            popupBackgroundWindow.Show();
+        }
     }
 }
