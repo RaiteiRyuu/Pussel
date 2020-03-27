@@ -12,7 +12,6 @@
             <Label Content="Choose a background" VerticalAlignment="Top" HorizontalAlignment="Center" Height="32" Margin="85,50,75,0" Width="132" />
             <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                 <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
-                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"/>
             </Grid>
             <Grid Margin="10,80,10,10">
 
