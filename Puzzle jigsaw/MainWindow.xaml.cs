@@ -23,10 +23,16 @@ namespace Puzzle_jigsaw
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Backgrounds popupBackgroundWindow = null;
+        private FullImage popupFullImageWindow = null;
+        private Puzzle_Pieces popupPuzzlePiecesWindow = null;
+
         public MainWindow()
         {
             InitializeComponent();
-
+            popupBackgroundWindow = new Backgrounds();
+            popupFullImageWindow = new FullImage();
+            popupPuzzlePiecesWindow = new Puzzle_Pieces();
    
         }
 
@@ -52,7 +58,10 @@ namespace Puzzle_jigsaw
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             if (open_File.ShowDialog() == true)
             {
-                imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
+                BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
+                imgPhoto.Source = img;
+                popupFullImageWindow.FullImageImage.Source = img;
+                popupFullImageWindow.Show();
             }
         }
 
@@ -73,8 +82,7 @@ namespace Puzzle_jigsaw
 
         private void mouseclick(object sender, MouseButtonEventArgs e)
         {
-            Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
-            popupPuzzleWindow.Show();
+            popupPuzzlePiecesWindow.Show();
         }
 
         private void Close(object sender, MouseButtonEventArgs e)
@@ -86,15 +94,11 @@ namespace Puzzle_jigsaw
         {
             OpenFileDialog open_File = new OpenFileDialog();
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-            //imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
-
-            FullImage popupFullImageWindow = new FullImage();
             popupFullImageWindow.Show();
         }
 
         private void clickBackground(object sender, MouseButtonEventArgs e)
         {
-            Backgrounds popupBackgroundWindow = new Backgrounds();
             popupBackgroundWindow.Show();
         }
     }
