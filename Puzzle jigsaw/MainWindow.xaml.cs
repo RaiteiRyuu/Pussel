@@ -1,7 +1,8 @@
-﻿using MaterialDesignThemes.Wpf;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,21 +25,40 @@ namespace Puzzle_jigsaw
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        DispatcherTimer dt = new DispatcherTimer();
+        Stopwatch sw = new Stopwatch();
+        string currentTime = string.Empty;
         private Backgrounds backgroundCombobox = null;
         private FullImage popupFullImageWindow = null;
         private Puzzle_Pieces popupPuzzlePiecesWindow = null;
-
+        
         public MainWindow()
         {
             InitializeComponent();
             backgroundCombobox = new Backgrounds();
             popupFullImageWindow = new FullImage();
             popupPuzzlePiecesWindow = new Puzzle_Pieces();
-   
+            InitializeComponent();
+            dt.Tick += new EventHandler(dt_Tick);
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
         }
 
-     
 
+        void dt_Tick(object sender, EventArgs e)
+        {
+            if (sw.IsRunning)
+            {
+                TimeSpan ts = sw.Elapsed;
+                currentTime = String.Format("{0:00}:{1:00}",
+                ts.Minutes, ts.Seconds, 10);
+                timertxtblock.Text = currentTime;
+            }
+        }
+
+        private void startbtn_Click(object sender, RoutedEventArgs e)
+
+ 
         //private static ImageList Split(Bitmap image, int width, int height)
         //{
         //    ImageList rows = new ImageList();
@@ -54,21 +74,26 @@ namespace Puzzle_jigsaw
         //}
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+
         {
-            DispatcherTimer dt = new DispatcherTimer();
-            dt.Interval = TimeSpan.FromSeconds(1);
-            dt.Tick += dtTicker;
+            sw.Start();
             dt.Start();
         }
 
-        private int increment = 0;
-        private void dtTicker(object sender, EventArgs e)
+        private void stopbtn_Click(object sender, RoutedEventArgs e)
         {
-            increment++;
-            TimerLabel.Content = increment.ToString();
+            if (sw.IsRunning)
+            {
+                sw.Stop();
+            }
         }
 
-
+        private void resetbtn_Click(object sender, RoutedEventArgs e)
+        {
+            sw.Reset();
+            timertxtblock.Text = "00:00";
+        }
+        
         private void onclick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open_File = new OpenFileDialog();
@@ -139,10 +164,9 @@ namespace Puzzle_jigsaw
         {
             backgroundCombobox = new Backgrounds();
         }
+
         private class ImageList
         {
         }
-
-        
     }
 }
