@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Drawing;
 
 namespace Puzzle_jigsaw
 {
@@ -35,6 +36,22 @@ namespace Puzzle_jigsaw
             popupPuzzlePiecesWindow = new Puzzle_Pieces();
    
         }
+
+     
+
+        //private static ImageList Split(Bitmap image, int width, int height)
+        //{
+        //    ImageList rows = new ImageList();
+        //    rows.ImageSize = new Size(image.Width, height);
+        //    rows.Images.AddStrip(image);
+        //    ImageList cells = new ImageList();
+        //    cells.ImageSize = new Size(width, height);
+        //    foreach (Image row in Rows.Images)
+        //    {
+        //        cells.Images.AddStrip(row);
+        //    }
+        //    return cells;
+        //}
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -61,8 +78,23 @@ namespace Puzzle_jigsaw
                 BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
                 imgPhoto.Source = img;
                 popupFullImageWindow.FullImageImage.Source = img;
-                popupFullImageWindow.Show();
             }
+
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(open_File.FileName);
+            bitmap.EndInit();
+
+            Image croppedImage = new Image();
+            croppedImage.Width = 100;
+            croppedImage.Margin = new Thickness(2);
+
+            CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
+            new Int32Rect(20, 20, 100, 100));
+            // Set Image.Source to cropped image  
+            croppedImage.Source = cb;
+
+            popupFullImageWindow.FullImageImage.Source = cb;
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -94,12 +126,22 @@ namespace Puzzle_jigsaw
         {
             OpenFileDialog open_File = new OpenFileDialog();
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-            popupFullImageWindow.Show();
+
+            if (popupFullImageWindow.IsVisible == true)
+                popupFullImageWindow.Visibility = Visibility.Hidden;
+            else
+            {
+                popupFullImageWindow.Visibility = Visibility.Visible;
+            }
         }
 
         private void clickBackground(object sender, MouseButtonEventArgs e)
         {
             popupBackgroundWindow.Show();
+        }
+
+        private class ImageList
+        {
         }
     }
 }
