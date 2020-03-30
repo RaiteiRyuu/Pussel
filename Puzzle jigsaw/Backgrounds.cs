@@ -16,13 +16,10 @@ namespace Puzzle_jigsaw
       
         public Backgrounds()
         {
-            //InitializeComponent();
 
             var brushes = new List<Brush>
             {
                 new SolidColorBrush(Colors.SandyBrown),
-                
-
             };
 
             string[] fileEntries = Directory.GetFiles("../../Textures");

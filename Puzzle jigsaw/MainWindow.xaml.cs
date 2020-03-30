@@ -78,23 +78,23 @@ namespace Puzzle_jigsaw
                 BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
                 imgPhoto.Source = img;
                 popupFullImageWindow.FullImageImage.Source = img;
+
+
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(open_File.FileName);
+                bitmap.EndInit();
+
+                // Create a CroppedBitmap from BitmapImage  
+                CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
+                    new Int32Rect(0, 0, 100, 50));
+
+                imgPhoto.Source = cb;
+
             }
 
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(open_File.FileName);
-            bitmap.EndInit();
 
-            Image croppedImage = new Image();
-            croppedImage.Width = 50;
-            croppedImage.Margin = new Thickness(2);
-
-            CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
-            new Int32Rect(20, 20, 100, 100));
-            // Set Image.Source to cropped image  
-            croppedImage.Source = cb;
-
-            popupFullImageWindow.FullImageImage.Source = cb;
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
