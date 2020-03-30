@@ -24,14 +24,14 @@ namespace Puzzle_jigsaw
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Backgrounds popupBackgroundWindow = null;
+        private Backgrounds backgroundCombobox = null;
         private FullImage popupFullImageWindow = null;
         private Puzzle_Pieces popupPuzzlePiecesWindow = null;
 
         public MainWindow()
         {
             InitializeComponent();
-            popupBackgroundWindow = new Backgrounds();
+            backgroundCombobox = new Backgrounds();
             popupFullImageWindow = new FullImage();
             popupPuzzlePiecesWindow = new Puzzle_Pieces();
    
@@ -135,13 +135,14 @@ namespace Puzzle_jigsaw
             }
         }
 
-        private void clickBackground(object sender, MouseButtonEventArgs e)
+        private void chooseBackground_click(object sender, MouseButtonEventArgs e)
         {
-            popupBackgroundWindow.Show();
+            backgroundCombobox = new Backgrounds();
         }
-
         private class ImageList
         {
         }
+
+        
     }
 }
