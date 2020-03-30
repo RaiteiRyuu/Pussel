@@ -61,7 +61,18 @@ namespace Puzzle_jigsaw
                 BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
                 imgPhoto.Source = img;
                 popupFullImageWindow.FullImageImage.Source = img;
-                popupFullImageWindow.Show();
+
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(open_File.FileName);
+                bitmap.EndInit();
+
+                // Create a CroppedBitmap from BitmapImage  
+                CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
+                    new Int32Rect(0, 0, 100, 50));
+
+                imgPhoto.Source = cb;
             }
         }
 
