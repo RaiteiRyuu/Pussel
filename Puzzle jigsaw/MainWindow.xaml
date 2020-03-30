@@ -70,18 +70,25 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid>
+        <!--<Grid>
             <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                 <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
 
             </Grid>
-        </Grid>
+        </Grid>-->
 
 
         <Grid Background="{Binding SelectedBackground}">
-           
+            
+                <Grid>
+                    <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
+                        <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
 
-            <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    </Grid>
+                </Grid>
+
+
+                <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />
             </Border>
 
