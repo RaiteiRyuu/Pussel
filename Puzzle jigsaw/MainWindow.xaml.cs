@@ -86,7 +86,7 @@ namespace Puzzle_jigsaw
             bitmap.EndInit();
 
             Image croppedImage = new Image();
-            croppedImage.Width = 100;
+            croppedImage.Width = 50;
             croppedImage.Margin = new Thickness(2);
 
             CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,

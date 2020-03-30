@@ -241,7 +241,7 @@
 
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
-                                             
+                                             Content="Templates"
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
