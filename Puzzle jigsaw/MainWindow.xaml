@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
+        Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over"
@@ -329,8 +329,9 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-
-        <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
-
+        <TextBlock x:Name="clocktxtblock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+        <Button x:Name="startbtn" Margin="0,51,350,126" Background="White" Content="Start" FontSize="15" Click="startbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" ></Button>
+        <Button x:Name="stopbtn" Margin="0,84,350,126" Background="White" Content="Stop" FontSize="15" Click="stopbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
+        <Button x:Name="resetbtn" Margin="0,117,350,126" Background="White" Content="Reset" FontSize="15" Click="resetbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
     </Grid>
 </Window>

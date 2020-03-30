@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,30 +24,48 @@ namespace Puzzle_jigsaw
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer dt = new DispatcherTimer();
+        Stopwatch sw = new Stopwatch();
+        string currentTime = string.Empty;
         public MainWindow()
         {
             InitializeComponent();
-
-   
+            dt.Tick += new EventHandler(dt_Tick);
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+
+        void dt_Tick(object sender, EventArgs e)
         {
-            DispatcherTimer dt = new DispatcherTimer();
-            dt.Interval = TimeSpan.FromSeconds(1);
-            dt.Tick += dtTicker;
+            if (sw.IsRunning)
+            {
+                TimeSpan ts = sw.Elapsed;
+                currentTime = String.Format("{0:00}:{1:00}",
+                ts.Minutes, ts.Seconds, 10);
+                clocktxtblock.Text = currentTime;
+            }
+        }
+
+        private void startbtn_Click(object sender, RoutedEventArgs e)
+        {
+            sw.Start();
             dt.Start();
         }
 
-        private int increment = 0;
-        private void dtTicker(object sender, EventArgs e)
+        private void stopbtn_Click(object sender, RoutedEventArgs e)
         {
-            increment++;
-            TimerLabel.Content = increment.ToString();
-            if (increment == 60)
-                increment = 0;
+            if (sw.IsRunning)
+            {
+                sw.Stop();
+            }
         }
 
+        private void resetbtn_Click(object sender, RoutedEventArgs e)
+        {
+            sw.Reset();
+            clocktxtblock.Text = "00:00";
+        }
+        
         private void onclick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open_File = new OpenFileDialog();
