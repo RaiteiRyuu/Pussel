@@ -73,7 +73,21 @@ namespace Puzzle_jigsaw
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             if (open_File.ShowDialog() == true)
             {
-                imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
+
+                BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
+                imgPhoto.Source = img;
+                popupFullImageWindow.FullImageImage.Source = img;
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(open_File.FileName);
+                bitmap.EndInit();
+
+                // Create a CroppedBitmap from BitmapImage  
+                CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
+                    new Int32Rect(0, 0, 100, 50));
+
+                imgPhoto.Source = cb;
             }
         }
 

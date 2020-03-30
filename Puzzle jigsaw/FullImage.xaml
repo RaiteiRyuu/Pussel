@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="" Height="600" Width="800" >
+        Title="" Height="600" Width="800" Closing="FullImage_Closing" >
     
     <Grid Background="SandyBrown">
         <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
@@ -15,7 +15,7 @@
         <Grid Height="450" Width="634">
             
             <Border Background="White" BorderThickness="1" BorderBrush="Black">
-            <Image HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="634"/>
+            <Image Name="FullImageImage" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="634" />
             </Border>
         </Grid>
     </Grid>
