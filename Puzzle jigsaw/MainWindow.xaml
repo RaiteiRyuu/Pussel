@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Puzzle_jigsaw"
+        
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+
+    <Window.DataContext>
+        <local:Backgrounds />
+    </Window.DataContext>
 
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over"
@@ -68,19 +73,13 @@
         <Grid>
             <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                 <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+
             </Grid>
         </Grid>
 
 
-        <Grid Background="SandyBrown" Margin="0,51,0,0">
-            <!-- Code for Uploading background image-->
-
-
-
-
-
-
-
+        <Grid Background="{Binding SelectedBackground}">
+           
 
             <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />
@@ -109,11 +108,13 @@
                                           Height="30" Width="30"
                                           BorderThickness="0"
                                           Style="{StaticResource tb_style}" RenderTransformOrigin="-0.033,0.9">
-                                //add button background//
+
+                                <!--//add button background//-->
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="Assets/menu.png"
                                                 Stretch="None"/>
                                 </ToggleButton.Background>
+
                                 <!--//toggle button //-->
                                 <ToggleButton.Triggers>
                                     <EventTrigger RoutedEvent="ToggleButton.Unchecked">
@@ -153,9 +154,9 @@
                         <ListView x:Name="LV" Background="Transparent"
                                   BorderBrush="Transparent"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            
+
                             <!--load image-->
-                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="onclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
                                     <Image Source="Assets/load-puzzle.png"
                                            Stretch="None"
@@ -191,7 +192,7 @@
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-                            
+
                             <!--Load Saved State-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -212,15 +213,30 @@
                             </ListViewItem>
 
                             <!-- Templates-->
-                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                            <ListViewItem x:Name="chooseBackground1" HorizontalAlignment="Left" Margin="0,0,0,15" MouseUp="chooseBackground_click" >
                                 <StackPanel Orientation="Horizontal" Width="230">
-                                    <Image Source="Assets/pictures-folder.png"
+                                    <Image x:Name="chooseBackground" Source="Assets/pictures-folder.png"
                                            Stretch="None"
                                            Margin="12,0,0,0" Height="40">
                                     </Image>
-                                    <TextBlock Text="Templates"
-                                               Margin="25,0,0,0">
+                                    <TextBlock Text="Backgrounds"
+                                               Margin="20,0,0,0">
                                     </TextBlock>
+                                    <ComboBox ItemsSource="{Binding BackgroundOptions}"
+                                        SelectedItem="{Binding SelectedBackground}"
+                                        Width="70"
+                                        Height="40"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="10,0,0,0">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{Binding}"
+                                                    Height="40"
+                                                    Width="70" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
                                 </StackPanel>
 
                                 <ListViewItem.ToolTip>
@@ -229,7 +245,7 @@
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-                 
+
                             <!--Puzzle-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="mouseclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -249,7 +265,7 @@
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
 
-                            
+
 
                             <!--Preview Image-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">

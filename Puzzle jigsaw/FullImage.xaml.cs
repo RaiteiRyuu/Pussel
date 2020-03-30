@@ -22,6 +22,7 @@ namespace Puzzle_jigsaw
         public FullImage()
         {
             InitializeComponent();
+
         }
     }
 }
