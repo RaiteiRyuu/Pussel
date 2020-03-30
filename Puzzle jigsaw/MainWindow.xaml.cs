@@ -1,7 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -11,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -24,11 +22,14 @@ namespace Puzzle_jigsaw
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Backgrounds backgroundCombobox = null;
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
+
         public MainWindow()
         {
+            backgroundCombobox = new Backgrounds();
             InitializeComponent();
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
@@ -115,6 +116,11 @@ namespace Puzzle_jigsaw
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void chooseBackground_click(object sender, MouseButtonEventArgs e)
+        {
+            backgroundCombobox = new Backgrounds();
         }
     }
 }

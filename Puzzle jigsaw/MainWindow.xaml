@@ -8,6 +8,10 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
+    <Window.DataContext>
+        <local:Backgrounds />
+    </Window.DataContext>
+
     <Window.Resources>
         <ImageBrush x:Key="tb_mouse_over"
                     ImageSource="Assets/menu_highlight.png"/>
@@ -74,17 +78,17 @@
 
 
         <Grid Background="{Binding SelectedBackground}">
-            
-                <Grid>
-                    <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
-                        <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
 
-                    </Grid>
+            <Grid>
+                <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
+                    <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+
                 </Grid>
+            </Grid>
 
 
 
-                <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />
             </Border>
 
@@ -214,20 +218,35 @@
                             </ListViewItem>
 
                             <!-- Templates-->
-                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                            <ListViewItem x:Name="chooseBackground1" HorizontalAlignment="Left" Margin="0,0,0,15" MouseUp="chooseBackground_click" >
                                 <StackPanel Orientation="Horizontal" Width="230">
-                                    <Image Source="Assets/pictures-folder.png"
+                                    <Image x:Name="chooseBackground" Source="Assets/pictures-folder.png"
                                            Stretch="None"
                                            Margin="12,0,0,0" Height="40">
                                     </Image>
-                                    <TextBlock Text="Templates"
-                                               Margin="25,0,0,0">
+                                    <TextBlock Text="Backgrounds"
+                                               Margin="20,0,0,0">
                                     </TextBlock>
+                                    <ComboBox ItemsSource="{Binding BackgroundOptions}"
+                                        SelectedItem="{Binding SelectedBackground}"
+                                        Width="70"
+                                        Height="40"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="10,0,0,0">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{Binding}"
+                                                    Height="40"
+                                                    Width="70" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
                                 </StackPanel>
 
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
-                                             Content="Templates"
+                                             
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
