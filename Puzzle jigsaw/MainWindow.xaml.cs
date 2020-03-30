@@ -23,14 +23,21 @@ namespace Puzzle_jigsaw
     public partial class MainWindow : Window
     {
         private Backgrounds backgroundCombobox = null;
+        private FullImage popupFullImageWindow = null;
+        private Puzzle_Pieces popupPuzzlePiecesWindow = null;
+
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
 
+    
         public MainWindow()
         {
-            backgroundCombobox = new Backgrounds();
             InitializeComponent();
+
+            popupFullImageWindow = new FullImage();
+            popupPuzzlePiecesWindow = new Puzzle_Pieces();
+            backgroundCombobox = new Backgrounds();
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
         }
@@ -83,11 +90,11 @@ namespace Puzzle_jigsaw
                 bitmap.UriSource = new Uri(open_File.FileName);
                 bitmap.EndInit();
 
-                // Create a CroppedBitmap from BitmapImage  
+                //// Create a CroppedBitmap from BitmapImage  
                 CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
                     new Int32Rect(0, 0, 100, 50));
 
-                imgPhoto.Source = cb;
+                //imgPhoto.Source = cb;
             }
         }
 
@@ -122,8 +129,6 @@ namespace Puzzle_jigsaw
             OpenFileDialog open_File = new OpenFileDialog();
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             //imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
-
-            FullImage popupFullImageWindow = new FullImage();
             popupFullImageWindow.Show();
         }
 
@@ -136,5 +141,6 @@ namespace Puzzle_jigsaw
         {
             backgroundCombobox = new Backgrounds();
         }
+
     }
 }

@@ -161,7 +161,7 @@
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             
                             <!--load image-->
-                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="onclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
                                     <Image Source="Assets/load-puzzle.png"
                                            Stretch="None"
@@ -246,7 +246,7 @@
 
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
-                                             
+                                             Content="Backgrounds"
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
