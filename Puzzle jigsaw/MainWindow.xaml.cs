@@ -1,7 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +10,10 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Drawing;
 
 namespace Puzzle_jigsaw
 {
@@ -28,53 +26,61 @@ namespace Puzzle_jigsaw
         private FullImage popupFullImageWindow = null;
         private Puzzle_Pieces popupPuzzlePiecesWindow = null;
 
+        DispatcherTimer dt = new DispatcherTimer();
+        Stopwatch sw = new Stopwatch();
+        string currentTime = string.Empty;
+
+    
         public MainWindow()
         {
             InitializeComponent();
-            backgroundCombobox = new Backgrounds();
+
             popupFullImageWindow = new FullImage();
             popupPuzzlePiecesWindow = new Puzzle_Pieces();
-   
+            backgroundCombobox = new Backgrounds();
+            dt.Tick += new EventHandler(dt_Tick);
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
         }
 
-     
 
-        //private static ImageList Split(Bitmap image, int width, int height)
-        //{
-        //    ImageList rows = new ImageList();
-        //    rows.ImageSize = new Size(image.Width, height);
-        //    rows.Images.AddStrip(image);
-        //    ImageList cells = new ImageList();
-        //    cells.ImageSize = new Size(width, height);
-        //    foreach (Image row in Rows.Images)
-        //    {
-        //        cells.Images.AddStrip(row);
-        //    }
-        //    return cells;
-        //}
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        void dt_Tick(object sender, EventArgs e)
         {
-            DispatcherTimer dt = new DispatcherTimer();
-            dt.Interval = TimeSpan.FromSeconds(1);
-            dt.Tick += dtTicker;
+            if (sw.IsRunning)
+            {
+                TimeSpan ts = sw.Elapsed;
+                currentTime = String.Format("{0:00}:{1:00}",
+                ts.Minutes, ts.Seconds, 10);
+                clocktxtblock.Text = currentTime;
+            }
+        }
+
+        private void startbtn_Click(object sender, RoutedEventArgs e)
+        {
+            sw.Start();
             dt.Start();
         }
 
-        private int increment = 0;
-        private void dtTicker(object sender, EventArgs e)
+        private void stopbtn_Click(object sender, RoutedEventArgs e)
         {
-            increment++;
-            TimerLabel.Content = increment.ToString();
+            if (sw.IsRunning)
+            {
+                sw.Stop();
+            }
         }
 
-
+        private void resetbtn_Click(object sender, RoutedEventArgs e)
+        {
+            sw.Reset();
+            clocktxtblock.Text = "00:00";
+        }
+        
         private void onclick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open_File = new OpenFileDialog();
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             if (open_File.ShowDialog() == true)
             {
+
                 BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
                 imgPhoto.Source = img;
                 popupFullImageWindow.FullImageImage.Source = img;
@@ -84,15 +90,13 @@ namespace Puzzle_jigsaw
                 bitmap.UriSource = new Uri(open_File.FileName);
                 bitmap.EndInit();
 
-                // Create a CroppedBitmap from BitmapImage  
+                //// Create a CroppedBitmap from BitmapImage  
                 CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
                     new Int32Rect(0, 0, 100, 50));
 
                 //imgPhoto.Source = cb;
 
             }
-
-
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -112,7 +116,8 @@ namespace Puzzle_jigsaw
 
         private void mouseclick(object sender, MouseButtonEventArgs e)
         {
-            popupPuzzlePiecesWindow.Show();
+            Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
+            popupPuzzleWindow.Show();
         }
 
         private void Close(object sender, MouseButtonEventArgs e)
@@ -124,23 +129,19 @@ namespace Puzzle_jigsaw
         {
             OpenFileDialog open_File = new OpenFileDialog();
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            //imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
+            popupFullImageWindow.Show();
+        }
 
-            if (popupFullImageWindow.IsVisible == true)
-                popupFullImageWindow.Visibility = Visibility.Hidden;
-            else
-            {
-                popupFullImageWindow.Visibility = Visibility.Visible;
-            }
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void chooseBackground_click(object sender, MouseButtonEventArgs e)
         {
             backgroundCombobox = new Backgrounds();
         }
-        private class ImageList
-        {
-        }
 
-        
     }
 }

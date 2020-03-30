@@ -24,8 +24,8 @@ namespace Puzzle_jigsaw
             InitializeComponent();
 
 
-
         }
+        
         private void FullImage_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.Hide();

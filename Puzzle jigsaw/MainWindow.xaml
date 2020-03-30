@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Puzzle_jigsaw"
-        
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="PuzzleGame" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
@@ -70,16 +69,24 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid>
+        <!--<Grid>
             <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                 <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
-
             </Grid>
-        </Grid>
+        </Grid>-->
+
 
 
         <Grid Background="{Binding SelectedBackground}">
-           
+
+            <Grid>
+                <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
+                    <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+
+                </Grid>
+            </Grid>
+
+
 
             <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />
@@ -108,13 +115,11 @@
                                           Height="30" Width="30"
                                           BorderThickness="0"
                                           Style="{StaticResource tb_style}" RenderTransformOrigin="-0.033,0.9">
-
-                                <!--//add button background//-->
+                                //add button background//
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="Assets/menu.png"
                                                 Stretch="None"/>
                                 </ToggleButton.Background>
-
                                 <!--//toggle button //-->
                                 <ToggleButton.Triggers>
                                     <EventTrigger RoutedEvent="ToggleButton.Unchecked">
@@ -154,7 +159,7 @@
                         <ListView x:Name="LV" Background="Transparent"
                                   BorderBrush="Transparent"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
+                            
                             <!--load image-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="onclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -192,7 +197,7 @@
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-
+                            
                             <!--Load Saved State-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -241,11 +246,11 @@
 
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
-                                             Content="Templates"
+                                             Content="Backgrounds"
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-
+                 
                             <!--Puzzle-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="mouseclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -265,7 +270,7 @@
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
 
-
+                            
 
                             <!--Preview Image-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
@@ -345,7 +350,9 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-
-        <Label x:Name="TimerLabel" Content="0" FontFamily="Segoe UI" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+        <TextBlock x:Name="clocktxtblock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+        <Button x:Name="startbtn" Margin="0,51,350,126" Background="White" Content="Start" FontSize="15" Click="startbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" ></Button>
+        <Button x:Name="stopbtn" Margin="0,84,350,126" Background="White" Content="Stop" FontSize="15" Click="stopbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
+        <Button x:Name="resetbtn" Margin="0,117,350,126" Background="White" Content="Reset" FontSize="15" Click="resetbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
     </Grid>
 </Window>

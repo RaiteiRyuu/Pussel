@@ -6,14 +6,12 @@ using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-
 namespace Puzzle_jigsaw
 {
-   
     public partial class Backgrounds : INotifyPropertyChanged
     {
         private Brush selectedBackground;
-      
+
         public Backgrounds()
         {
 
@@ -42,6 +40,5 @@ namespace Puzzle_jigsaw
             }
         }
 
-        }
     }
-
+}
