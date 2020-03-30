@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Puzzle_jigsaw"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="" Height="300" Width="300" Background="SandyBrown">
+        Title="" Height="300" Width="300" Background="SandyBrown" Closing="PuzzleImage_Closing">
     <Grid>
         <Grid>
             <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">

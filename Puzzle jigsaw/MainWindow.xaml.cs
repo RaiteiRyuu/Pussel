@@ -88,7 +88,7 @@ namespace Puzzle_jigsaw
                 CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
                     new Int32Rect(0, 0, 100, 50));
 
-                imgPhoto.Source = cb;
+                //imgPhoto.Source = cb;
 
             }
 

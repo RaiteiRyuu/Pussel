@@ -24,6 +24,12 @@ namespace Puzzle_jigsaw
             InitializeComponent();
         }
 
+        private void PuzzleImage_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
+
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
 
