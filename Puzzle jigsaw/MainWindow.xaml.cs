@@ -42,7 +42,7 @@ namespace Puzzle_jigsaw
                 TimeSpan ts = sw.Elapsed;
                 currentTime = String.Format("{0:00}:{1:00}",
                 ts.Minutes, ts.Seconds, 10);
-                timertxtblock.Text = currentTime;
+                clocktxtblock.Text = currentTime;
             }
         }
 
@@ -63,7 +63,7 @@ namespace Puzzle_jigsaw
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
-            timertxtblock.Text = "00:00";
+            clocktxtblock.Text = "00:00";
         }
         
         private void onclick(object sender, RoutedEventArgs e)
