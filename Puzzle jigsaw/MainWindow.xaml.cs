@@ -79,8 +79,6 @@ namespace Puzzle_jigsaw
                 imgPhoto.Source = img;
                 popupFullImageWindow.FullImageImage.Source = img;
 
-
-
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(open_File.FileName);
