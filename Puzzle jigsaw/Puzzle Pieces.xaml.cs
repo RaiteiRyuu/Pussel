@@ -31,7 +31,7 @@ namespace Puzzle_jigsaw
 
         private void okBtn(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }

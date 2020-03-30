@@ -1,4 +1,4 @@
-using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Drawing;
 
 namespace Puzzle_jigsaw
 {
@@ -25,20 +24,11 @@ namespace Puzzle_jigsaw
     /// </summary>
     public partial class MainWindow : Window
     {
-
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
-        private Backgrounds backgroundCombobox = null;
-        private FullImage popupFullImageWindow = null;
-        private Puzzle_Pieces popupPuzzlePiecesWindow = null;
-        
         public MainWindow()
         {
-            InitializeComponent();
-            backgroundCombobox = new Backgrounds();
-            popupFullImageWindow = new FullImage();
-            popupPuzzlePiecesWindow = new Puzzle_Pieces();
             InitializeComponent();
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
@@ -57,24 +47,6 @@ namespace Puzzle_jigsaw
         }
 
         private void startbtn_Click(object sender, RoutedEventArgs e)
-
- 
-        //private static ImageList Split(Bitmap image, int width, int height)
-        //{
-        //    ImageList rows = new ImageList();
-        //    rows.ImageSize = new Size(image.Width, height);
-        //    rows.Images.AddStrip(image);
-        //    ImageList cells = new ImageList();
-        //    cells.ImageSize = new Size(width, height);
-        //    foreach (Image row in Rows.Images)
-        //    {
-        //        cells.Images.AddStrip(row);
-        //    }
-        //    return cells;
-        //}
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-
         {
             sw.Start();
             dt.Start();
@@ -100,26 +72,8 @@ namespace Puzzle_jigsaw
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             if (open_File.ShowDialog() == true)
             {
-                BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
-                imgPhoto.Source = img;
-                popupFullImageWindow.FullImageImage.Source = img;
-
-
-
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(open_File.FileName);
-                bitmap.EndInit();
-
-                // Create a CroppedBitmap from BitmapImage  
-                CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
-                    new Int32Rect(0, 0, 100, 50));
-
-                imgPhoto.Source = cb;
-
+                imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
             }
-
-
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -139,7 +93,8 @@ namespace Puzzle_jigsaw
 
         private void mouseclick(object sender, MouseButtonEventArgs e)
         {
-            popupPuzzlePiecesWindow.Show();
+            Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
+            popupPuzzleWindow.Show();
         }
 
         private void Close(object sender, MouseButtonEventArgs e)
@@ -151,22 +106,15 @@ namespace Puzzle_jigsaw
         {
             OpenFileDialog open_File = new OpenFileDialog();
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            //imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
 
-            if (popupFullImageWindow.IsVisible == true)
-                popupFullImageWindow.Visibility = Visibility.Hidden;
-            else
-            {
-                popupFullImageWindow.Visibility = Visibility.Visible;
-            }
+            FullImage popupFullImageWindow = new FullImage();
+            popupFullImageWindow.Show();
         }
 
-        private void chooseBackground_click(object sender, MouseButtonEventArgs e)
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            backgroundCombobox = new Backgrounds();
-        }
 
-        private class ImageList
-        {
         }
     }
 }

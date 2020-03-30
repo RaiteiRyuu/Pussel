@@ -75,7 +75,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Backgrounds.cs" />
     <Compile Include="FullImage.xaml.cs">
       <DependentUpon>FullImage.xaml</DependentUpon>
     </Compile>
@@ -146,7 +145,7 @@
     <Resource Include="Assets\save.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Textures\Knitted.jpeg" />
+    <Folder Include="Textures\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\puzzle2-2.png" />
@@ -164,26 +163,6 @@
     <Resource Include="Assets\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Textures\Bricks.jpeg" />
-    <Resource Include="Textures\Concrete.jpeg" />
-    <Resource Include="Textures\Confetti.jpeg" />
-    <Resource Include="Textures\Ferns.jpeg" />
-    <Resource Include="Textures\Forest.jpeg" />
-    <Resource Include="Textures\Fur.jpeg" />
-    <Resource Include="Textures\Leaf.jpeg" />
-    <Resource Include="Textures\Meringue.jpeg" />
-    <Resource Include="Textures\Moss.jpeg" />
-    <Resource Include="Textures\Paint.jpeg" />
-    <Resource Include="Textures\Paper.jpg" />
-    <Resource Include="Textures\Rain.jpeg" />
-    <Resource Include="Textures\Sand.jpeg" />
-    <Resource Include="Textures\Stone.jpg" />
-    <Resource Include="Textures\Wood_1.jpeg" />
-    <Resource Include="Textures\Wood_2.jpeg" />
-    <Resource Include="Textures\Wood_3.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Textures\Purple.jpeg" />
     <Resource Include="Assets\load-puzzle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
