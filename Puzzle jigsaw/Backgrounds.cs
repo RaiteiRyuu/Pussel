@@ -10,10 +10,12 @@ namespace Puzzle_jigsaw
 {
     public partial class Backgrounds : INotifyPropertyChanged
     {
+        //class for creating a background
         private Brush selectedBackground;
 
         public Backgrounds()
         {
+            //Show all the background alternatives in the combobox as a list.
 
             var brushes = new List<Brush>
             {
@@ -32,6 +34,7 @@ namespace Puzzle_jigsaw
 
         public Brush SelectedBackground
         {
+            //selected background is returned to MainWindow.xaml
             get => selectedBackground;
             set
             {

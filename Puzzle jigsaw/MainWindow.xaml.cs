@@ -82,19 +82,69 @@ namespace Puzzle_jigsaw
             {
 
                 BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
-                imgPhoto.Source = img;
+                //imgPhoto.Source = img;
                 popupFullImageWindow.FullImageImage.Source = img;
 
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(open_File.FileName);
-                bitmap.EndInit();
+                Image[,] image = new Image[4, 4];
+                for (int x = 0; x < 4; x++)
+                {
+                    for (int y = 0; y < 4; y++)
+                    {
+                        image[x, y] = new Image();
+                        image[x, y].Width = 350;
+                        image[x, y].Height = 200;
+                        image[x, y].Name = $"cb_x{x}_y{y}";
+                        image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
+                        image[x, y].VerticalAlignment = VerticalAlignment.Top;
+                        image[x, y].Margin = new Thickness(x * 150, y * 100, 0, 0);
+                        PuzzleGrid.Children.Add(image[x, y]);
+                    }
+                }
+                CroppedBitmap cb;
+                for (int x = 0; x < 4; x++)
+                {
+                    for (int y = 0; y < 4; y++)
+                    {
+                        cb = new CroppedBitmap(img, new Int32Rect(x * 25, y * 25, 100,100));
+                        image[x, y].Source = cb;
+                    }
+                }
 
-                // Create a CroppedBitmap from BitmapImage  
-                CroppedBitmap cb = new CroppedBitmap((BitmapSource)bitmap,
-                    new Int32Rect(0, 0, 100, 50));
+                //for (int x = 0; x < 4; x++)
+                //{
+                //        Image cb = new Image();
 
-                //imgPhoto.Source = cb;
+                //    for (int y = 0; y < 4; y++)
+                //    {
+                //        cb.Name = $"cb_x{x}_y{y}";
+                //        cb.Width = 350;
+                //        cb.Height = 200;
+                //        cb.HorizontalAlignment = HorizontalAlignment.Left;
+                //        cb.VerticalAlignment = VerticalAlignment.Top;
+                //        cb.Margin = new Thickness(5, 0, 5, 0);
+                //        PuzzleGrid.Children.Add(cb);
+
+
+                //    }
+                //}
+
+                ////BitmapImage bitmap = new BitmapImage();
+                ////bitmap.BeginInit();
+                //////bitmap.UriSource = new Uri(open_File.FileName);
+                ////bitmap.EndInit();
+
+                //// Create a CroppedBitmap from BitmapImage  
+                //CroppedBitmap cbit1 = new CroppedBitmap(img, new Int32Rect(0, 0, 250, 200));
+                //CroppedBitmap cbit2 = new CroppedBitmap(img, new Int32Rect(10, 10, 200, 100));
+                //CroppedBitmap cbit3 = new CroppedBitmap(img, new Int32Rect(20, 20, 200, 100));
+                //CroppedBitmap cbit4 = new CroppedBitmap(img, new Int32Rect(30, 30, 200, 100));
+
+                //cb.Source = cbit1;
+                //cb2.Source = cbit2;
+                //cb3.Source = cbit3;
+                //cb4.Source = cbit4;
+
+
 
             }
         }
@@ -129,7 +179,6 @@ namespace Puzzle_jigsaw
         {
             OpenFileDialog open_File = new OpenFileDialog();
             open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-            //imgPhoto.Source = new BitmapImage(new Uri(open_File.FileName));
             popupFullImageWindow.Show();
         }
 
@@ -140,8 +189,10 @@ namespace Puzzle_jigsaw
 
         private void chooseBackground_click(object sender, MouseButtonEventArgs e)
         {
+            //opens up a combobox with backgrounds
             backgroundCombobox = new Backgrounds();
         }
+       
 
     }
 }

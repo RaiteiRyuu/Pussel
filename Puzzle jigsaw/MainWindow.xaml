@@ -81,15 +81,30 @@
             <Grid>
                 <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                     <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
-
                 </Grid>
             </Grid>
+            <!--<Grid Width="719" Height="429">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>-->
+            <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid x:Name="PuzzleGrid" Width="700" Height="400">
 
-
-
-            <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />
+                        <!--<Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />-->
+                        <!--<Image x:Name="cb1" Width="350" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left"></Image>-->
+                        <Image x:Name="cb2" Width="350" Height="200" VerticalAlignment="Top" HorizontalAlignment="Right" ></Image>
+                        <Image x:Name="cb3" Width="350" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Left" ></Image>
+                        <Image x:Name="cb4" Width="350" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Image>
+                </Grid>
             </Border>
+
+
 
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
                   Width="65" Background="GhostWhite" Margin="0,0,0,10" >
