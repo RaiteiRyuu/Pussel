@@ -96,11 +96,12 @@ namespace Puzzle_jigsaw
                             image[x, y] = new Image();
                             image[x, y].Width = 200;
                             image[x, y].Height = 95;
-                            image[x, y].Name = $"cb_x{x}_y{y}";
+                            //image[x, y].Name = $"cb_x{x}_y{y}";
                             image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
                             image[x, y].VerticalAlignment = VerticalAlignment.Top;
                             image[x, y].Margin = new Thickness(x * 96, y * 96, 0, 0);
                             PuzzleGrid.Children.Add(image[x, y]);
+                            Console.WriteLine(PuzzleGrid);
                     }
                 }
                 CroppedBitmap cb;
@@ -110,29 +111,14 @@ namespace Puzzle_jigsaw
                     for (int y = 0; y < 4; y++)
                     {
                                 //JU STÖRRE BILD. DESTO HÖGRE SKALA OCH ANTAL PIXLAR I "Int32Rect"
-                            cb = new CroppedBitmap(img, new Int32Rect(x * 201, y * 201, 200,200));
+                            cb = new CroppedBitmap(img, new Int32Rect(x * 200, y * 200, 200,200));
 
-                            image[x, y].Source = cb;
+                        
+                        Random pix = new Random();
+                        image[x, y].Source = cb;
                     }
                 }
 
-                //for (int x = 0; x < 4; x++)
-                //{
-                //        Image cb = new Image();
-
-                //    for (int y = 0; y < 4; y++)
-                //    {
-                //        cb.Name = $"cb_x{x}_y{y}";
-                //        cb.Width = 350;
-                //        cb.Height = 200;
-                //        cb.HorizontalAlignment = HorizontalAlignment.Left;
-                //        cb.VerticalAlignment = VerticalAlignment.Top;
-                //        cb.Margin = new Thickness(5, 0, 5, 0);
-                //        PuzzleGrid.Children.Add(cb);
-
-
-                //    }
-                //}
 
                 ////BitmapImage bitmap = new BitmapImage();
                 ////bitmap.BeginInit();

@@ -72,9 +72,6 @@
 
 
     <Grid Background="SandyBrown" Margin="0,0,0,0">
-        <!-- Code for Uploading background image-->
-
-
 
         <Grid Background="{Binding SelectedBackground}">
 
@@ -83,23 +80,12 @@
                     <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
                 </Grid>
             </Grid>
-            <!--<Grid Width="719" Height="429">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-            </Grid>-->
-                
+                      
                 <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
                 </Border>
 
                 <Grid x:Name="PuzzleGrid"  Margin="115" >
                 </Grid>
-
 
 
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
@@ -108,16 +94,7 @@
 
                     <StackPanel x:Name="stack_panel">
                         <Grid Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                            <!--<TextBlock Grid.Row="1"
-                                       Grid.Column="1"
-                                       Margin="73,-20,0,0"
-                                       Text="M E N U"
-                                       Foreground="White"
-                                       FontSize="22"
-                                       Background="Transparent"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center">
-                            </TextBlock>-->
+                            
                             <ToggleButton x:Name="toggle_Btn" Grid.Column="0"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left"
@@ -229,31 +206,22 @@
 
                             <!-- Templates-->
                             <ListViewItem x:Name="chooseBackground1" HorizontalAlignment="Left" Margin="0,0,0,15" MouseUp="chooseBackground_click" >
-                                <StackPanel Orientation="Horizontal" Width="230">
-                                    <Image x:Name="chooseBackground" Source="Assets/pictures-folder.png"
-                                           Stretch="None"
-                                           Margin="12,0,0,0" Height="40">
-                                    </Image>
-                                    <TextBlock Text="Backgrounds"
-                                               Margin="20,0,0,0">
-                                    </TextBlock>
-                                    <ComboBox ItemsSource="{Binding BackgroundOptions}"
+                                <ComboBox ItemsSource="{Binding BackgroundOptions}"
                                         SelectedItem="{Binding SelectedBackground}"
                                         Width="70"
                                         Height="40"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
                                         Margin="10,0,0,0">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Background="{Binding}"
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Background="{Binding}"
                                                     Height="40"
                                                     Width="70" />
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                </StackPanel>
-
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                      
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
                                              Content="Backgrounds"
