@@ -109,6 +109,7 @@ namespace Puzzle_jigsaw
 
                     for (int y = 0; y < 4; y++)
                     {
+                                //JU STÖRRE BILD. DESTO HÖGRE SKALA OCH ANTAL PIXLAR I "Int32Rect"
                             cb = new CroppedBitmap(img, new Int32Rect(x * 201, y * 201, 200,200));
 
                             image[x, y].Source = cb;

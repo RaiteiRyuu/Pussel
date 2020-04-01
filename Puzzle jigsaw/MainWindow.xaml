@@ -68,11 +68,11 @@
             </Setter>
         </Style>
     </Window.Resources>
-  
 
 
-        <Grid Background="SandyBrown" Margin="0,0,0,0">
-            <!-- Code for Uploading background image-->
+
+    <Grid Background="SandyBrown" Margin="0,0,0,0">
+        <!-- Code for Uploading background image-->
 
 
 
@@ -93,16 +93,12 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
             </Grid>-->
-            <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Grid x:Name="PuzzleGrid" Width="700" Height="400">
+                
+                <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
+                </Border>
 
-                        <!--<Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />-->
-                        <!--<Image x:Name="cb1" Width="350" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left"></Image>-->
-                        <Image x:Name="cb2" Width="350" Height="200" VerticalAlignment="Top" HorizontalAlignment="Right" ></Image>
-                        <Image x:Name="cb3" Width="350" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Left" ></Image>
-                        <Image x:Name="cb4" Width="350" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Image>
+                <Grid x:Name="PuzzleGrid"  Margin="115" >
                 </Grid>
-            </Border>
 
 
 
@@ -173,7 +169,7 @@
                         <ListView x:Name="LV" Background="Transparent"
                                   BorderBrush="Transparent"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            
+
                             <!--load image-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="onclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -211,7 +207,7 @@
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-                            
+
                             <!--Load Saved State-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -264,7 +260,7 @@
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-                 
+
                             <!--Puzzle-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="mouseclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
@@ -284,7 +280,7 @@
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
 
-                            
+
 
                             <!--Preview Image-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
