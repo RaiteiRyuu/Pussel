@@ -81,7 +81,7 @@
 
             <Grid>
                 <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
-                    <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                    <!--<TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>-->
 
                 </Grid>
             </Grid>
@@ -351,6 +351,7 @@
             </Grid>
         </Grid>
         <TextBlock x:Name="clocktxtblock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+        <Button x:Name="title" Margin="359,6,350,126" Background="White" Opacity="0.95" Content="The Puzzle Game" FontSize="19" HorizontalAlignment="Left" VerticalAlignment="Top" Width="182" Height="37" > </Button>
         <Button x:Name="startbtn" Margin="0,51,350,126" Background="White" Content="Start" FontSize="15" Click="startbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" ></Button>
         <Button x:Name="stopbtn" Margin="0,84,350,126" Background="White" Content="Stop" FontSize="15" Click="stopbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
         <Button x:Name="resetbtn" Margin="0,117,350,126" Background="White" Content="Reset" FontSize="15" Click="resetbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
