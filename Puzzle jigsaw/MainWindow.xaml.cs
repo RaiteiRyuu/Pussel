@@ -99,7 +99,7 @@ namespace Puzzle_jigsaw
                             image[x, y].Name = $"cb_x{x}_y{y}";
                             image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
                             image[x, y].VerticalAlignment = VerticalAlignment.Top;
-                            image[x, y].Margin = new Thickness(x * 100, y * 100, 0, 0);
+                            image[x, y].Margin = new Thickness(x * 96, y * 96, 0, 0);
                             PuzzleGrid.Children.Add(image[x, y]);
                     }
                 }
@@ -109,7 +109,7 @@ namespace Puzzle_jigsaw
 
                     for (int y = 0; y < 4; y++)
                     {
-                            cb = new CroppedBitmap(img, new Int32Rect(x * 50, y * 50, 50,50));
+                            cb = new CroppedBitmap(img, new Int32Rect(x * 201, y * 201, 200,200));
 
                             image[x, y].Source = cb;
                     }
