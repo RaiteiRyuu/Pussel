@@ -94,12 +94,12 @@ namespace Puzzle_jigsaw
                     {
                        
                             image[x, y] = new Image();
-                            image[x, y].Width = 150;
-                            image[x, y].Height = 70;
+                            image[x, y].Width = 200;
+                            image[x, y].Height = 95;
                             image[x, y].Name = $"cb_x{x}_y{y}";
                             image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
                             image[x, y].VerticalAlignment = VerticalAlignment.Top;
-                            image[x, y].Margin = new Thickness(x * 70, y * 70, 0, 0);
+                            image[x, y].Margin = new Thickness(x * 100, y * 100, 0, 0);
                             PuzzleGrid.Children.Add(image[x, y]);
                     }
                 }
