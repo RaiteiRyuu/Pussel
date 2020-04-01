@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -88,25 +89,29 @@ namespace Puzzle_jigsaw
                 Image[,] image = new Image[4, 4];
                 for (int x = 0; x < 4; x++)
                 {
+               
                     for (int y = 0; y < 4; y++)
                     {
-                        image[x, y] = new Image();
-                        image[x, y].Width = 350;
-                        image[x, y].Height = 200;
-                        image[x, y].Name = $"cb_x{x}_y{y}";
-                        image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
-                        image[x, y].VerticalAlignment = VerticalAlignment.Top;
-                        image[x, y].Margin = new Thickness(x * 150, y * 100, 0, 0);
-                        PuzzleGrid.Children.Add(image[x, y]);
+                       
+                            image[x, y] = new Image();
+                            image[x, y].Width = 150;
+                            image[x, y].Height = 70;
+                            image[x, y].Name = $"cb_x{x}_y{y}";
+                            image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
+                            image[x, y].VerticalAlignment = VerticalAlignment.Top;
+                            image[x, y].Margin = new Thickness(x * 70, y * 70, 0, 0);
+                            PuzzleGrid.Children.Add(image[x, y]);
                     }
                 }
                 CroppedBitmap cb;
                 for (int x = 0; x < 4; x++)
                 {
+
                     for (int y = 0; y < 4; y++)
                     {
-                        cb = new CroppedBitmap(img, new Int32Rect(x * 25, y * 25, 100,100));
-                        image[x, y].Source = cb;
+                            cb = new CroppedBitmap(img, new Int32Rect(x * 50, y * 50, 50,50));
+
+                            image[x, y].Source = cb;
                     }
                 }
 
