@@ -30,7 +30,6 @@
             <Setter Property="HasDropShadow" Value="True"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
 
-
         </Style>
         <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
             <Setter Property="Template">
@@ -69,23 +68,14 @@
         </Style>
     </Window.Resources>
     <Grid Background="SandyBrown" Margin="0,0,0,0">
-        <Grid>
-            <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
-            </Grid>
-        </Grid>
-
-
 
         <Grid Background="{Binding SelectedBackground}">
 
             <Grid>
                 <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
-                    <!--<TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>-->
 
                 </Grid>
             </Grid>
-
-
 
             <Border Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="429" Width="719" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Image Name ="imgPhoto" HorizontalAlignment="Stretch" Height="429"  VerticalAlignment="Stretch" Width="719" />
@@ -268,8 +258,6 @@
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-
-                            
 
                             <!--Preview Image-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
