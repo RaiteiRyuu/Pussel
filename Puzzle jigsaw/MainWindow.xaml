@@ -71,6 +71,7 @@
 
 
 
+
     <Grid Background="SandyBrown" Margin="0,0,0,0">
 
         <Grid Background="{Binding SelectedBackground}">
@@ -80,6 +81,7 @@
                     <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
                 </Grid>
             </Grid>
+
                       
                 <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
                 </Border>

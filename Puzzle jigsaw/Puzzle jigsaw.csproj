@@ -80,12 +80,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Backgrounds.cs" />
+    <Compile Include="CuttingImage.cs" />
     <Compile Include="FullImage.xaml.cs">
       <DependentUpon>FullImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Puzzle Pieces.xaml.cs">
       <DependentUpon>Puzzle Pieces.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Pieces.cs" />
+    <Compile Include="PuzzleRects.cs" />
+
     <Page Include="FullImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
