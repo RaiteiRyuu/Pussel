@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.IO;
+using Path = System.IO.Path;
 
 namespace Puzzle_jigsaw
 {
@@ -184,7 +186,18 @@ namespace Puzzle_jigsaw
             //opens up a combobox with backgrounds
             backgroundCombobox = new Backgrounds();
         }
-       
 
+        private void savePuzzle(object sender, MouseButtonEventArgs e)
+        {
+            string path = Path.GetTempFileName();
+            FileInfo file = new FileInfo(path);
+            SaveFileDialog saveGame = new SaveFileDialog();
+            saveGame.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (saveGame.ShowDialog() == true)
+            {
+                file.CopyTo(saveGame.FileName);
+            }
+        }
+    
     }
 }

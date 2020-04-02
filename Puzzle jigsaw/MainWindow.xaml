@@ -167,7 +167,7 @@
                             </ListViewItem>
 
                             <!--Save-->
-                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="savePuzzle">
                                 <StackPanel Orientation="Horizontal" Width="230">
                                     <Image Source="Assets/save.png"
                                            Stretch="None"
