@@ -97,12 +97,12 @@ namespace Puzzle_jigsaw
                        
                             image[x, y] = new Image();
                             image[x, y].Width = 200;
-                            image[x, y].Height = 85;
+                            image[x, y].Height = 95;
                             //image[x, y].Name = $"cb_x{x}_y{y}";
                             image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
                             image[x, y].VerticalAlignment = VerticalAlignment.Top;
-                            image[x, y].Margin = new Thickness(x * 90, y * 90, 0, 0);
-                            puzzleCanvas.Children.Add(image[x, y]);
+                            image[x, y].Margin = new Thickness(x * 96, y * 96, 0, 0);
+                            PuzzleGrid.Children.Add(image[x, y]);
                             Console.WriteLine(PuzzleGrid);
                     }
                 }
@@ -113,7 +113,7 @@ namespace Puzzle_jigsaw
                     for (int y = 0; y < 4; y++)
                     {
                                 //JU STÖRRE BILD. DESTO HÖGRE SKALA OCH ANTAL PIXLAR I "Int32Rect"
-                            cb = new CroppedBitmap(img, new Int32Rect(x * 205, y * 205, 200,200));
+                            cb = new CroppedBitmap(img, new Int32Rect(x * 200, y * 200, 200,200));
 
                         
                         Random pix = new Random();

@@ -80,9 +80,10 @@
                     <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
                 </Grid>
             </Grid>
+                      
+                <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
+                </Border>
 
-            <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
-            </Border>
 
             <Grid x:Name="PuzzleGrid"  Margin="115" Grid.Row="1" Grid.Column="1"  >
                 <Grid.ColumnDefinitions>
@@ -112,14 +113,13 @@
                 </ScrollViewer>
             </Grid>
 
-
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
                   Width="65" Background="GhostWhite" Margin="0,0,0,10" >
                 <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
 
                     <StackPanel x:Name="stack_panel">
                         <Grid Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-
+                            
                             <ToggleButton x:Name="toggle_Btn" Grid.Column="0"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left"
@@ -246,7 +246,7 @@
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-
+                      
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
                                              Content="Backgrounds"
