@@ -141,7 +141,6 @@ namespace Puzzle_jigsaw
                 //    }
                 //}
 
-
                 ////BitmapImage bitmap = new BitmapImage();
                 ////bitmap.BeginInit();
                 //////bitmap.UriSource = new Uri(open_File.FileName);
