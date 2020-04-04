@@ -107,7 +107,7 @@
                     </GridSplitter.Background>
                 </GridSplitter>
 
-                <ScrollViewer Grid.Column="2" Name="scvPickUp" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Visible" Margin="0,-13,-14,-13">
+                <ScrollViewer Grid.Column="2" Name="PuzzleScroll" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Visible" Margin="0,-13,-14,-13">
                     <WrapPanel Name="piecesPickup" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Height="5000" Width="163">
                     </WrapPanel>
                 </ScrollViewer>
