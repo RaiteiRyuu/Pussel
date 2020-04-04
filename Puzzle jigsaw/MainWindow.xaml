@@ -92,11 +92,6 @@
                 </Grid.ColumnDefinitions>
                 <Grid Background="White" Margin="0,0,13,0">
                     <Canvas Name="puzzleCanvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="483" Height="370">
-                        <Canvas.RenderTransform>
-                            <ScaleTransform 
-                                    ScaleX="{Binding ElementName=zoomSlider, Path=Value}"
-                                    ScaleY="{Binding ElementName=zoomSlider, Path=Value}"/>
-                        </Canvas.RenderTransform>
                     </Canvas>
                 </Grid>
                 
@@ -111,13 +106,8 @@
                     </GridSplitter.Background>
                 </GridSplitter>
 
-                <ScrollViewer Grid.Column="2" Name="scvPickUp" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Visible">
-                    <WrapPanel Name="piecesPickup" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Height="1000" Width="149">
-                        <WrapPanel.RenderTransform>
-                            <ScaleTransform 
-                                    ScaleX="{Binding ElementName=zoomSlider, Path=Value}"
-                                    ScaleY="{Binding ElementName=zoomSlider, Path=Value}"/>
-                        </WrapPanel.RenderTransform>
+                <ScrollViewer Grid.Column="2" Name="scvPickUp" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Visible" Margin="0,-13,-14,-13">
+                    <WrapPanel Name="piecesPickup" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Height="5000" Width="163">
                     </WrapPanel>
                 </ScrollViewer>
             </Grid>
