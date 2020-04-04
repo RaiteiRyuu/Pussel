@@ -82,55 +82,28 @@
                 </Grid>
             </Grid>
 
+                      
+                <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
+                </Border>
 
-            <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
-            </Border>
-
-
-            <Grid x:Name="PuzzleGrid"  Margin="115" Grid.Row="1" Grid.Column="1"  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Background="White" Margin="0,0,13,0">
-                    <Canvas Name="puzzleCanvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="483" Height="370">
-                    </Canvas>
+                <Grid x:Name="PuzzleGrid"  Margin="115" >
                 </Grid>
-                
-
-                <GridSplitter Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="SizeNS" Margin="0,-13">
-                    <GridSplitter.Background >
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
-                            <GradientStop Offset="0.0" Color="#131413"/>
-                            <GradientStop Offset="0.5" Color="#FFF0F0F0"/>
-                            <GradientStop Offset="1.0" Color="#131413"/>
-                        </LinearGradientBrush>
-                    </GridSplitter.Background>
-                </GridSplitter>
-
-                <ScrollViewer Grid.Column="2" Name="scvPickUp" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Visible" Margin="0,-13,-14,-13">
-                    <WrapPanel Name="piecesPickup" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Height="5000" Width="163">
-                    </WrapPanel>
-                </ScrollViewer>
-            </Grid>
 
 
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
-                  Width="65" Background="White" Margin="0,0,0,10" >
+                  Width="65" Background="GhostWhite" Margin="0,0,0,10" >
                 <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
-
 
                     <StackPanel x:Name="stack_panel">
                         <Grid Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                   
+                            
                             <ToggleButton x:Name="toggle_Btn" Grid.Column="0"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Left"
-                                        Margin="15,0,0,0"
-                                        Height="30" Width="30"
-                                        BorderThickness="0"
-                                        Style="{StaticResource tb_style}" RenderTransformOrigin="-0.033,0.9">
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          Margin="15,0,0,0"
+                                          Height="30" Width="30"
+                                          BorderThickness="0"
+                                          Style="{StaticResource tb_style}" RenderTransformOrigin="-0.033,0.9">
                                 //add button background//
                                 <ToggleButton.Background>
                                     <ImageBrush ImageSource="Assets/menu.png"
@@ -173,8 +146,8 @@
 
                         <!--menu list-->
                         <ListView x:Name="LV" Background="Transparent"
-                                BorderBrush="Transparent"
-                                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                  BorderBrush="Transparent"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                             <!--load image-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="onclick">
@@ -215,9 +188,9 @@
                             </ListViewItem>
 
                             <!--Load Saved State-->
-                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
-                            <StackPanel Orientation="Horizontal" Width="230">
-                            <Image Source="Assets/upload.png"
+                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                                <StackPanel Orientation="Horizontal" Width="230">
+                                    <Image Source="Assets/upload.png"
                                            Stretch="None"
                                            Margin="12,0,0,0" Height="40">
                                     </Image>
@@ -237,7 +210,7 @@
                             <ListViewItem x:Name="chooseBackground1" HorizontalAlignment="Left" Margin="0,0,0,15" MouseUp="chooseBackground_click" >
                                 <ComboBox ItemsSource="{Binding BackgroundOptions}"
                                         SelectedItem="{Binding SelectedBackground}"
-                                        Width="90"
+                                        Width="70"
                                         Height="40"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
@@ -246,11 +219,11 @@
                                         <DataTemplate>
                                             <Grid Background="{Binding}"
                                                     Height="40"
-                                                    Width="90" />
+                                                    Width="70" />
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-
+                      
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
                                              Content="Backgrounds"
@@ -261,38 +234,38 @@
                             <!--Puzzle-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="mouseclick">
                                 <StackPanel Orientation="Horizontal" Width="230">
-                                <Image Source="Assets/puzzle.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0" Height="40">
-                                </Image>
-                                <TextBlock Text="Puzzle Pieces"
-                                           Margin="25,0,0,0">
-                                </TextBlock>
-                            </StackPanel>
+                                    <Image Source="Assets/puzzle.png"
+                                           Stretch="None"
+                                           Margin="12,0,0,0" Height="40">
+                                    </Image>
+                                    <TextBlock Text="Puzzle Pieces"
+                                               Margin="25,0,0,0">
+                                    </TextBlock>
+                                </StackPanel>
 
-                            <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_puzzle"
-                                         Content="Puzzle Pieces"
-                                         Style="{StaticResource tt_style}"></ToolTip>
-                            </ListViewItem.ToolTip>
-                        </ListViewItem>
+                                <ListViewItem.ToolTip>
+                                    <ToolTip x:Name="tt_puzzle"
+                                             Content="Puzzle Pieces"
+                                             Style="{StaticResource tt_style}"></ToolTip>
+                                </ListViewItem.ToolTip>
+                            </ListViewItem>
 
 
 
-                        <!--Preview Image-->
-                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">                 
-                            <StackPanel Orientation="Horizontal" Width="230">
-                                <Image Source="Assets/picture.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0" Height="40">
-                                </Image>
-                                <TextBlock Text="Preview Image"
-                                           Margin="25,0,0,0">
-                                </TextBlock>
-                            </StackPanel>
+                            <!--Preview Image-->
+                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
+                                <StackPanel Orientation="Horizontal" Width="230">
+                                    <Image Source="Assets/picture.png"
+                                           Stretch="None"
+                                           Margin="12,0,0,0" Height="40">
+                                    </Image>
+                                    <TextBlock Text="Preview Image"
+                                               Margin="25,0,0,0">
+                                    </TextBlock>
+                                </StackPanel>
 
-                            <ListViewItem.ToolTip>
-                            <ToolTip x:Name="tt_PreviewImg"
+                                <ListViewItem.ToolTip>
+                                    <ToolTip x:Name="tt_PreviewImg"
                                              Content="Preview Image"
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
@@ -313,10 +286,10 @@
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Exit"
                                              Content="Exit"
-                                         Style="{StaticResource tt_style}"></ToolTip>
+                                             Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
                             </ListViewItem>
-                            
+
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="Template">
@@ -328,8 +301,8 @@
                                                         Padding="{TemplateBinding Padding}"
                                                         SnapsToDevicePixels="True">
                                                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                                                     </ContentPresenter>
                                                 </Border>

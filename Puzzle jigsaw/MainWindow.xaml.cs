@@ -89,7 +89,6 @@ namespace Puzzle_jigsaw
                 //imgPhoto.Source = img;
                 popupFullImageWindow.FullImageImage.Source = img;
 
-
                 CuttingImage cutImage = new CuttingImage(img);
 
                 #region Kitts puzzle cutting
@@ -141,6 +140,7 @@ namespace Puzzle_jigsaw
 
                 //    }
                 //}
+
 
                 ////BitmapImage bitmap = new BitmapImage();
                 ////bitmap.BeginInit();
