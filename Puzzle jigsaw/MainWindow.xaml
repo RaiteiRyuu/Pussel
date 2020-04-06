@@ -91,8 +91,8 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Background="White" Margin="0,0,0,0" Opacity="0.6">
-                    <Canvas Name="puzzleCanvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Height="370">
+                <Grid Background="White" Margin="0,0,10,0" Opacity="0.6">
+                    <Canvas Name="puzzleCanvas" Width="320" Height="370">
                     </Canvas>
                 </Grid>
                 
@@ -106,8 +106,8 @@
                         </LinearGradientBrush>
                     </GridSplitter.Background>
                 </GridSplitter>
-                <Grid Grid.Column="2" Background="White" Margin="0,0,0,0">
-                    <Canvas Name="imageCanvas" HorizontalAlignment="Right" VerticalAlignment="Top" Width="330" Height="370">
+                <Grid Grid.Column="2" Background="White" Margin="10,0,0,0">
+                    <Canvas Name="imageCanvas" Width="320" Height="370">
                         
                     </Canvas>
                 </Grid>
