@@ -87,12 +87,12 @@
 
             <Grid x:Name="PuzzleGrid"  Margin="115" Grid.Row="1" Grid.Column="1"  >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Background="White" Margin="0,0,13,0">
-                    <Canvas Name="puzzleCanvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="483" Height="370">
+                <Grid Background="White" Margin="0,0,0,0" Opacity="0.6">
+                    <Canvas Name="puzzleCanvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Height="370">
                     </Canvas>
                 </Grid>
                 
@@ -106,11 +106,11 @@
                         </LinearGradientBrush>
                     </GridSplitter.Background>
                 </GridSplitter>
-
-                <ScrollViewer Grid.Column="2" Name="PuzzleScroll" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Visible" Margin="0,-13,-14,-13">
-                    <WrapPanel Name="piecesPickup" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Height="5000" Width="163">
-                    </WrapPanel>
-                </ScrollViewer>
+                <Grid Grid.Column="2" Background="White" Margin="0,0,0,0">
+                    <Canvas Name="imageCanvas" HorizontalAlignment="Right" VerticalAlignment="Top" Width="330" Height="370">
+                        
+                    </Canvas>
+                </Grid>
             </Grid>
 
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
@@ -276,7 +276,7 @@
 
 
                             <!--Preview Image-->
-                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
+                            <!--<ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
                                 <StackPanel Orientation="Horizontal" Width="230">
                                     <Image Source="Assets/picture.png"
                                            Stretch="None"
@@ -292,7 +292,7 @@
                                              Content="Preview Image"
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
-                            </ListViewItem>
+                            </ListViewItem>-->
 
                             <!-- Exit-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="Close">
