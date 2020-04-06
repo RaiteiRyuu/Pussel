@@ -211,6 +211,17 @@ namespace Puzzle_jigsaw
                 file.CopyTo(saveGame.FileName);
             }
         }
-    
+
+        //private void ClickInCanvas(object sender, MouseButtonEventArgs e)
+        //{
+        //    counter++;
+        //    CounterLabel.Content = counter.ToString();
+        //}
+
+        private void ClickInCanvasGrid(object sender, MouseButtonEventArgs e)
+        {
+            counter++;
+            CounterLabel.Content = counter.ToString();
+        }
     }
 }
