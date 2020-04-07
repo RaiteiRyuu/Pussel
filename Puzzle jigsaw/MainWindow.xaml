@@ -117,7 +117,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Background="White" Margin="0,0,10,0"  PreviewMouseLeftButtonUp="ClickInCanvasGrid">
-                    <Canvas Name="puzzleCanvas" Width="350" Height="350" MouseLeftButtonDown="MoveTilePressed"/>
+                    <Canvas Name="puzzleCanvas" Width="340" Height="370" MouseLeftButtonDown="MoveTilePressed"/>
                 </Grid>
 
                 <Canvas Grid.Column="1" Background="#131413" Opacity="0.6" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="SizeNS" Margin="0,-13">
@@ -142,7 +142,7 @@
 
 
             <Grid x:Name="navigation_panel" HorizontalAlignment="Right" 
-                  Width="65" Background="GhostWhite" Margin="0,0,0,10" >
+                  Width="65" Background="GhostWhite" Margin="0,0,0,134" >
                 <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
 
                     <StackPanel x:Name="stack_panel">

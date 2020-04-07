@@ -36,27 +36,8 @@ namespace Puzzle_jigsaw
         {
             this.winParent = parent;
 
-            /*
-            for (int x = 0; x<16; ++x)
-            {
-                for (int y = 0; y<16; ++y)
-                {
-                    print(manhattanDistance[x,y] + " ");
-                }
-                print("\r");
-            }
-            */
-
-            //PUZZLE GENERATION TYPES
-            switch (type)
-            {
-                case StartType.Normal:
-                    startPos();
-                    break;
-                case StartType.Random:
-                    randomize();
-                    break;
-            }
+                randomize();
+ 
         }
 
 
