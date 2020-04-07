@@ -120,7 +120,6 @@ namespace Puzzle_jigsaw
                 //            image[x, y].Source = cb;
                 //    }
                 //}
-                #endregion
 
                 #region whatsThis?
                 //for (int x = 0; x < 4; x++)

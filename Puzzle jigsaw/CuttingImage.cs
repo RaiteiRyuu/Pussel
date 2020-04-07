@@ -33,7 +33,7 @@ namespace Puzzle_jigsaw
                     image[x, y].HorizontalAlignment = HorizontalAlignment.Left;
                     image[x, y].VerticalAlignment = VerticalAlignment.Top;
                     image[x, y].Margin = new Thickness(x * 96, y * 96, 0, 0);
-                    PuzzleGrid.Children.Add(image[x, y]);
+                    //PuzzleGrid.Children.Add(image[x, y]);
                 }
             }
             CroppedBitmap cb;
