@@ -34,8 +34,8 @@ namespace Puzzle_jigsaw
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
 
-        public const double tileSize = 65;
-        public const double tileOffset = 5;
+        public const double tileSize = 76;
+        public const double tileOffset = 4;
         public const byte AnimationSpeed = 7;
         public bool movingTile = false;
 
@@ -67,8 +67,8 @@ namespace Puzzle_jigsaw
                 temp.EndInit();
                 tiles[i] = new Image();
                 tiles[i].Source = temp;
-                tiles[i].Width = temp.PixelWidth - 63;
-                tiles[i].Height = temp.PixelWidth - 63;
+                tiles[i].Width = temp.PixelWidth - 103;
+                tiles[i].Height = temp.PixelWidth - 103;
                 puzzleCanvas.Children.Add(tiles[i]);
             }
             ChangeTilesPositions();
