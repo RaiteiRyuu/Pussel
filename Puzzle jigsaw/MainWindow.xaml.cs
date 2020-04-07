@@ -63,7 +63,7 @@ namespace Puzzle_jigsaw
             {
                 BitmapImage temp = new BitmapImage();
                 temp.BeginInit();
-                temp.UriSource = new Uri("Tiles/Cute_Cat_" + (i + 1).ToString() + ".jpg", UriKind.Relative);
+                temp.UriSource = new Uri("Tiles/Cute_Cat_" + (i + 1).ToString() + ".png", UriKind.Relative);
                 temp.EndInit();
                 tiles[i] = new Image();
                 tiles[i].Source = temp;
