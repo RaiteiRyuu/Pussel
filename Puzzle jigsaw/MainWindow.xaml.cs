@@ -19,7 +19,7 @@ using System.IO;
 using Path = System.IO.Path;
 using System.Collections.Generic;
 using System.Windows.Media.Effects;
-
+using System.Threading;
 
 namespace Puzzle_jigsaw
 {
@@ -34,6 +34,17 @@ namespace Puzzle_jigsaw
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
 
+        public const double tileSize = 65;
+        public const double tileOffset = 5;
+        public const byte AnimationSpeed = 7;
+        public bool movingTile = false;
+
+        public static byte[,] puzzleMatrix = new byte[4, 4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 }, { 12, 13, 14, 15 } };
+        private Image[] tiles = new Image[15];
+        private Puzzle puzzle;
+
+        private delegate void EmptyDelegate();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -44,6 +55,105 @@ namespace Puzzle_jigsaw
 
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
+
+            #region put tiles in a list
+            puzzle = new Puzzle(Puzzle.StartType.Normal, this);
+
+            for (byte i = 0; i < 15; ++i)
+            {
+                BitmapImage temp = new BitmapImage();
+                temp.BeginInit();
+                temp.UriSource = new Uri("Tiles/Cute_Cat_" + (i + 1).ToString() + ".jpg", UriKind.Relative);
+                temp.EndInit();
+                tiles[i] = new Image();
+                tiles[i].Source = temp;
+                tiles[i].Width = temp.PixelWidth - 63;
+                tiles[i].Height = temp.PixelWidth - 63;
+                puzzleCanvas.Children.Add(tiles[i]);
+            }
+            ChangeTilesPositions();
+            #endregion
+        }
+
+        public void DoEvents()
+        {
+            Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, new EmptyDelegate(delegate { }));
+        }
+
+        public void ChangeTilesPositions()
+        {
+            for (byte i = 0; i < 16; ++i)
+            {
+                if (puzzle[i] == 0)
+                    continue;
+                Canvas.SetLeft(tiles[puzzle[i] - 1], (tileSize + tileOffset) * (i % 4) + tileOffset / 2);
+                Canvas.SetTop(tiles[puzzle[i] - 1], (tileSize + tileOffset) * (i / 4) + tileOffset / 2);
+            }
+        }
+        private void ShuffleButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            puzzle.randomize();
+            ChangeTilesPositions();
+        }
+
+
+        public void MoveTile(int num, int dir, int am)
+        {
+            /* dir 0 = left
+             * dir 1 = right
+             * dir 2 = up
+             * dir 3 = down
+             */
+            switch (dir)
+            {
+                case 0:
+                    Canvas.SetLeft(tiles[num], Canvas.GetLeft(tiles[num]) - AnimationSpeed * am);
+                    break;
+                case 1:
+                    Canvas.SetLeft(tiles[num], Canvas.GetLeft(tiles[num]) + AnimationSpeed * am);
+                    break;
+                case 2:
+                    Canvas.SetTop(tiles[num], Canvas.GetTop(tiles[num]) - AnimationSpeed * am);
+                    break;
+                case 3:
+                    Canvas.SetTop(tiles[num], Canvas.GetTop(tiles[num]) + AnimationSpeed * am);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void AnimateTile(int num, int dir, int am)
+        {
+            int to = (int)Math.Floor((tileSize + tileOffset) / AnimationSpeed);
+            for (int x = 0; x < to; ++x)
+            {
+                MoveTile(num - 1, dir, am);
+                DoEvents();
+                Thread.Sleep(10);
+            }
+        }
+
+        private void MoveTilePressed(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (movingTile)
+                return;
+            movingTile = true;
+            Point mpos = Mouse.GetPosition(puzzleCanvas);
+            byte x = (byte)Math.Floor(mpos.X / (tileSize + tileOffset));
+            byte y = (byte)Math.Floor(mpos.Y / (tileSize + tileOffset));
+            byte chosenTile = puzzleMatrix[y, x];
+            for (int dir = 0; dir < 4; ++dir)
+            {
+                int zeroPos = Puzzle.newidx[chosenTile, dir];
+                if ((zeroPos == -1) || (puzzle[zeroPos] != 0))
+                    continue;
+
+                puzzle.swapPositions(zeroPos, chosenTile);
+                AnimateTile(puzzle[zeroPos], dir, 1);
+                break;
+            }
+            movingTile = false;
         }
 
 

@@ -116,7 +116,7 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Background="White" Margin="0,0,10,0" Opacity="0.6" PreviewMouseLeftButtonUp="ClickInCanvasGrid">
+                <Grid Background="White" Margin="0,0,10,0"  PreviewMouseLeftButtonUp="ClickInCanvasGrid">
                     <Canvas Name="puzzleCanvas" Width="320" Height="370"/>
                 </Grid>
 
