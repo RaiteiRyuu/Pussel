@@ -25,7 +25,7 @@ namespace Puzzle_jigsaw
 {
     public partial class MainWindow : Window
     {
-      
+        public int counter = 0;
         private Backgrounds backgroundCombobox = null;
         private FullImage popupFullImageWindow = null;
         private Puzzle_Pieces popupPuzzlePiecesWindow = null;
@@ -80,20 +80,20 @@ namespace Puzzle_jigsaw
         
         private void onclick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog open_File = new OpenFileDialog();
-            open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-            if (open_File.ShowDialog() == true)
-            {
+        //     OpenFileDialog open_File = new OpenFileDialog();
+        //     open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+        //     if (open_File.ShowDialog() == true)
+        //     {
 
-                BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
-                //imgPhoto.Source = img;
-                popupFullImageWindow.FullImageImage.Source = img;
+        //         BitmapImage img = new BitmapImage(new Uri(open_File.FileName));
+        //         //imgPhoto.Source = img;
+        //         popupFullImageWindow.FullImageImage.Source = img;
 
-                CuttingImage cutImage = new CuttingImage(img);
+        //         CuttingImage cutImage = new CuttingImage(img);
 
-                #region Kitts puzzle cutting
-                //Image[,] image = new Image[4, 4];
-                //for (int x = 0; x < 4; x++)
+        //         #region Kitts puzzle cutting
+        //         //Image[,] image = new Image[4, 4];
+        //         //for (int x = 0; x < 4; x++)
                 //{
 
                 //    for (int y = 0; y < 4; y++)
@@ -158,7 +158,15 @@ namespace Puzzle_jigsaw
                 //cb4.Source = cbit4;
                 #endregion
 
-            }
+            // }
+            Image img = new Image();
+            //img.SetValue(Canvas.ZIndexProperty, 0);
+            img.Source = new BitmapImage(new Uri("Image/Cute_Cat.jpg", UriKind.Relative));
+            img.Width = imageCanvas.Width;
+            img.Height = imageCanvas.Height;
+            imageCanvas.Children.Add(img);
+            popupFullImageWindow.FullImageImage.Source = img.Source;
+           
         }
         
 
@@ -190,12 +198,17 @@ namespace Puzzle_jigsaw
             Application.Current.Shutdown();
         }
 
-        private void clickOnFull_Image(object sender, MouseButtonEventArgs e)
-        {
-            OpenFileDialog open_File = new OpenFileDialog();
-            open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-            popupFullImageWindow.Show();
-        }
+        //private void clickOnFull_Image(object sender, MouseButtonEventArgs e)
+        //{
+        //    //OpenFileDialog open_File = new OpenFileDialog();
+        //    //open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+        //    popupFullImageWindow.Show();
+        //    Image img = new Image();
+        //    img.Source = new BitmapImage(new Uri("Image/Cute_Cat.jpg", UriKind.Relative));
+        //    img.Width = popupFullImageWindow.Width;
+        //    img.Height = popupFullImageWindow.Height;
+        //    popupFullImageWindow.FullImageImage.Source = img.Source;
+        //}
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
@@ -219,7 +232,18 @@ namespace Puzzle_jigsaw
                 file.CopyTo(saveGame.FileName);
             }
         }
-    
+
+        //private void ClickInCanvas(object sender, MouseButtonEventArgs e)
+        //{
+        //    counter++;
+        //    CounterLabel.Content = counter.ToString();
+        //}
+
+        private void ClickInCanvasGrid(object sender, MouseButtonEventArgs e)
+        {
+            counter++;
+            CounterLabel.Content = counter.ToString();
+        }
     }
     public enum ViewMode
     {

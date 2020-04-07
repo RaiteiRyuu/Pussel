@@ -15,7 +15,7 @@
         <Grid Height="450" Width="634">
             
             <Border Background="White" BorderThickness="1" BorderBrush="Black">
-            <Image Name="FullImageImage" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="634" />
+                <Image Name="FullImageImage" HorizontalAlignment="Center" Height="450" VerticalAlignment="Top" Width="634" />
             </Border>
         </Grid>
     </Grid>

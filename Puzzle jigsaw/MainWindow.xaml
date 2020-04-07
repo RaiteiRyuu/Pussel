@@ -67,6 +67,25 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style  x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+            BorderThickness="{TemplateBinding BorderThickness}" 
+            Background="{TemplateBinding Background}" 
+            CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
 
@@ -80,23 +99,28 @@
                 <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                     <TextBlock Text="The Puzzle Game" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
                 </Grid>
+                <TextBlock x:Name="CounterTextBlock" Text="Counter" Width="Auto" Height="Auto" HorizontalAlignment="Left" FontSize="22" Margin="10,160,0,410">
+                    
+                </TextBlock>
+                
+                <Label x:Name="CounterLabel" Style="{StaticResource LabelStyle}" BorderBrush="#D0C219" BorderThickness="1" Content="0" Width="Auto" FontSize="22" Background="White"  HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Height="36" />
             </Grid>
-                      
-                <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
-                </Border>
+
+            <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
+            </Border>
+            
 
 
             <Grid x:Name="PuzzleGrid"  Margin="115" Grid.Row="1" Grid.Column="1"  >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Background="White" Margin="0,0,13,0">
-                    <Canvas Name="puzzleCanvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="483" Height="370">
-                    </Canvas>
+                <Grid Background="White" Margin="0,0,10,0" Opacity="0.6" PreviewMouseLeftButtonUp="ClickInCanvasGrid">
+                    <Canvas Name="puzzleCanvas" Width="320" Height="370"/>
                 </Grid>
-                
+
 
                 <GridSplitter Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="SizeNS" Margin="0,-13">
                     <GridSplitter.Background >
@@ -107,11 +131,11 @@
                         </LinearGradientBrush>
                     </GridSplitter.Background>
                 </GridSplitter>
+                <Grid Grid.Column="2" Background="White" Margin="10,0,0,0">
+                    <Canvas Name="imageCanvas" Width="320" Height="370">
 
-                <ScrollViewer Grid.Column="2" Name="PuzzleScroll" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Visible" Margin="0,-13,-14,-13">
-                    <WrapPanel Name="piecesPickup" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Height="5000" Width="163">
-                    </WrapPanel>
-                </ScrollViewer>
+                    </Canvas>
+                </Grid>
             </Grid>
 
 
@@ -121,7 +145,7 @@
 
                     <StackPanel x:Name="stack_panel">
                         <Grid Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                            
+
                             <ToggleButton x:Name="toggle_Btn" Grid.Column="0"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left"
@@ -248,7 +272,7 @@
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                      
+
                                 <ListViewItem.ToolTip>
                                     <ToolTip x:Name="tt_Folder"
                                              Content="Backgrounds"
@@ -278,7 +302,7 @@
 
 
                             <!--Preview Image-->
-                            <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
+                            <!--<ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="clickOnFull_Image">
                                 <StackPanel Orientation="Horizontal" Width="230">
                                     <Image Source="Assets/picture.png"
                                            Stretch="None"
@@ -294,7 +318,7 @@
                                              Content="Preview Image"
                                              Style="{StaticResource tt_style}"></ToolTip>
                                 </ListViewItem.ToolTip>
-                            </ListViewItem>
+                            </ListViewItem>-->
 
                             <!-- Exit-->
                             <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" MouseUp="Close">
@@ -355,9 +379,11 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
+        
         <TextBlock x:Name="clocktxtblock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
         <Button x:Name="startbtn" Margin="0,51,350,126" Background="White" Content="Start" FontSize="15" Click="startbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" ></Button>
         <Button x:Name="stopbtn" Margin="0,84,350,126" Background="White" Content="Stop" FontSize="15" Click="stopbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
         <Button x:Name="resetbtn" Margin="0,117,350,126" Background="White" Content="Reset" FontSize="15" Click="resetbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"></Button>
     </Grid>
+    
 </Window>
