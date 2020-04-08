@@ -1,30 +1,20 @@
-﻿using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.IO;
 using Path = System.IO.Path;
-using System.Collections.Generic;
-using System.Windows.Media.Effects;
 using System.Threading;
 
 namespace Puzzle_jigsaw
 {
     public partial class MainWindow : Window
     {
+        #region fields
         public int counter;
         private Backgrounds backgroundCombobox = null;
         private FullImage popupFullImageWindow = null;
@@ -34,10 +24,10 @@ namespace Puzzle_jigsaw
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
 
-        public const double tileSize = 80;
-        public const double tileOffset = 4;
-        public const byte AnimationSpeed = 7;
-        public bool movingTile = false;
+        private const double tileSize = 80;
+        private const double tileOffset = 4;
+        private const byte movementSpeed = 7;
+        //public bool movingTile = false;
 
         public static byte[,] puzzleMatrix = new byte[4, 4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 }, { 12, 13, 14, 15 } };
         private Image[] tiles = new Image[15];
@@ -45,6 +35,9 @@ namespace Puzzle_jigsaw
 
         private delegate void EmptyDelegate();
 
+        #endregion
+
+        #region Main constructor
         public MainWindow()
         {
             counter = 0;
@@ -76,6 +69,7 @@ namespace Puzzle_jigsaw
             ChangeTilesPositions();
             #endregion
         }
+        #endregion
 
         public void DoEvents()
         {
@@ -93,67 +87,70 @@ namespace Puzzle_jigsaw
             }
         }
 
-        public void MoveTile(int num, int dir, int am)
+        public void MoveTile(int num, int direction)
         {
             /* dir 0 = left
              * dir 1 = right
              * dir 2 = up
              * dir 3 = down
              */
-            switch (dir)
+
+            int correlation;
+            correlation = 1;
+            switch (direction)
             {
                 case 0:
-                    Canvas.SetLeft(tiles[num], Canvas.GetLeft(tiles[num]) - AnimationSpeed * am);
+                    Canvas.SetLeft(tiles[num], Canvas.GetLeft(tiles[num]) - movementSpeed * correlation);
                     break;
                 case 1:
-                    Canvas.SetLeft(tiles[num], Canvas.GetLeft(tiles[num]) + AnimationSpeed * am);
+                    Canvas.SetLeft(tiles[num], Canvas.GetLeft(tiles[num]) + movementSpeed * correlation);
                     break;
                 case 2:
-                    Canvas.SetTop(tiles[num], Canvas.GetTop(tiles[num]) - AnimationSpeed * am);
+                    Canvas.SetTop(tiles[num], Canvas.GetTop(tiles[num]) - movementSpeed * correlation);
                     break;
                 case 3:
-                    Canvas.SetTop(tiles[num], Canvas.GetTop(tiles[num]) + AnimationSpeed * am);
+                    Canvas.SetTop(tiles[num], Canvas.GetTop(tiles[num]) + movementSpeed * correlation);
                     break;
                 default:
                     break;
-
             }
         }
 
-        private void AnimateTile(int num, int dir, int am)
+        private void TileMovementAnimation(int num, int direction)
         {
-            int to = (int)Math.Floor((tileSize + tileOffset) / AnimationSpeed);
-            for (int x = 0; x < to; ++x)
+            int pixelation = (int)Math.Floor((tileSize + tileOffset) / movementSpeed);
+            for (int x = 0; x < pixelation; ++x)
             {
-                MoveTile(num - 1, dir, am);
+                MoveTile(num - 1, direction);
                 DoEvents();
-                Thread.Sleep(10);
+                Thread.Sleep(5);
             }
         }
 
-        private void MoveTilePressed(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void MoveTileOnClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (movingTile)
-                return;
-            movingTile = true;
-            Point mpos = Mouse.GetPosition(puzzleCanvas);
-            byte x = (byte)Math.Floor(mpos.X / (tileSize + tileOffset));
-            byte y = (byte)Math.Floor(mpos.Y / (tileSize + tileOffset));
+            
+            Point mousePosition = Mouse.GetPosition(puzzleCanvas);
+            byte x = (byte)Math.Floor(mousePosition.X / (tileSize + tileOffset));
+            byte y = (byte)Math.Floor(mousePosition.Y / (tileSize + tileOffset));
             byte chosenTile = puzzleMatrix[y, x];
-            for (int dir = 0; dir < 4; ++dir)
+            for (int direction = 0; direction < 4; direction++)
             {
-                int zeroPos = Puzzle.newidx[chosenTile, dir];
-                if ((zeroPos == -1) || (puzzle[zeroPos] != 0))
+                int emptyTile = Puzzle.newIndex[chosenTile, direction];
+                if ((emptyTile == -1) || (puzzle[emptyTile] != 0))
                     continue;
 
                 counter++;
+
                 sw.Start();
                 dt.Start();
-                puzzle.swapPositions(zeroPos, chosenTile);
-                AnimateTile(puzzle[zeroPos], dir, 1);
+
+                puzzle.swapPositions(emptyTile, chosenTile);
+                TileMovementAnimation(puzzle[emptyTile], direction);
+
                 break;
             }
-            movingTile = false;
+            
         }
 
 
@@ -238,7 +235,7 @@ namespace Puzzle_jigsaw
 
         }
 
-                private void chooseBackground_click(object sender, MouseButtonEventArgs e)
+        private void chooseBackground_click(object sender, MouseButtonEventArgs e)
         {
             //opens up a combobox with backgrounds
             backgroundCombobox = new Backgrounds();
