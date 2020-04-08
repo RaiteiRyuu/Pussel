@@ -262,6 +262,8 @@ namespace Puzzle_jigsaw
         private void ClickInCanvasGrid(object sender, MouseButtonEventArgs e)
         {
             CounterLabel.Content = counter.ToString();
+            sw.Start();
+            dt.Start();
         }
     }
 
