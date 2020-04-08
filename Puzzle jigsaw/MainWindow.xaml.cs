@@ -55,6 +55,7 @@ namespace Puzzle_jigsaw
 
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            clocktxtblock.Text = "00:00";
 
             #region put tiles in a list
             puzzle = new Puzzle(Puzzle.StartType.Normal, this);
