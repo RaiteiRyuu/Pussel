@@ -25,7 +25,7 @@ namespace Puzzle_jigsaw
 {
     public partial class MainWindow : Window
     {
-        public int counter = 0;
+        public int counter;
         private Backgrounds backgroundCombobox = null;
         private FullImage popupFullImageWindow = null;
         private Puzzle_Pieces popupPuzzlePiecesWindow = null;
@@ -47,6 +47,7 @@ namespace Puzzle_jigsaw
 
         public MainWindow()
         {
+            counter = 0;
             InitializeComponent();
 
             backgroundCombobox = new Backgrounds();
