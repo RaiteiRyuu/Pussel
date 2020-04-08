@@ -56,6 +56,7 @@ namespace Puzzle_jigsaw
 
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            clocktxtblock.Text = "00:00";
 
             #region put tiles in a list
             puzzle = new Puzzle(Puzzle.StartType.Normal, this);
@@ -146,6 +147,8 @@ namespace Puzzle_jigsaw
                     continue;
 
                 counter++;
+                sw.Start();
+                dt.Start();
                 puzzle.swapPositions(zeroPos, chosenTile);
                 AnimateTile(puzzle[zeroPos], dir, 1);
                 break;
@@ -163,12 +166,6 @@ namespace Puzzle_jigsaw
                 ts.Minutes, ts.Seconds, 10);
                 clocktxtblock.Text = currentTime;
             }
-        }
-
-        private void startbtn_Click(object sender, RoutedEventArgs e)
-        {
-            sw.Start();
-            dt.Start();
         }
 
         private void stopbtn_Click(object sender, RoutedEventArgs e)
