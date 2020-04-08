@@ -35,9 +35,7 @@ namespace Puzzle_jigsaw
         public Puzzle(StartType type, MainWindow parent)
         {
             this.winParent = parent;
-
-                randomize();
- 
+            randomize();
         }
 
 

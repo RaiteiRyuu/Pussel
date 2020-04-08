@@ -57,7 +57,7 @@ namespace Puzzle_jigsaw
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
 
             #region put tiles in a list
-            puzzle = new Puzzle(Puzzle.StartType.Normal, this);
+            puzzle = new Puzzle(Puzzle.StartType.Random, this);
 
             for (byte i = 0; i < 15; ++i)
             {
@@ -181,6 +181,8 @@ namespace Puzzle_jigsaw
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
+            puzzle.randomize();
+            ChangeTilesPositions();
             clocktxtblock.Text = "00:00";
         }
         
