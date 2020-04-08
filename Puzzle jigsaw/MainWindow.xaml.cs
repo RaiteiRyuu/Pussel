@@ -146,6 +146,8 @@ namespace Puzzle_jigsaw
                     continue;
 
                 counter++;
+                sw.Start();
+                dt.Start();
                 puzzle.swapPositions(zeroPos, chosenTile);
                 AnimateTile(puzzle[zeroPos], dir, 1);
                 break;
@@ -163,12 +165,6 @@ namespace Puzzle_jigsaw
                 ts.Minutes, ts.Seconds, 10);
                 clocktxtblock.Text = currentTime;
             }
-        }
-
-        private void startbtn_Click(object sender, RoutedEventArgs e)
-        {
-            sw.Start();
-            dt.Start();
         }
 
         private void stopbtn_Click(object sender, RoutedEventArgs e)
@@ -262,8 +258,6 @@ namespace Puzzle_jigsaw
         private void ClickInCanvasGrid(object sender, MouseButtonEventArgs e)
         {
             CounterLabel.Content = counter.ToString();
-            sw.Start();
-            dt.Start();
         }
     }
 
