@@ -87,7 +87,6 @@
     <Compile Include="Puzzle Pieces.xaml.cs">
       <DependentUpon>Puzzle Pieces.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pieces.cs" />
     <Compile Include="Puzzle.cs" />
     <Page Include="FullImage.xaml">
       <SubType>Designer</SubType>
