@@ -145,6 +145,8 @@ namespace Puzzle_jigsaw
                     continue;
 
                 counter++;
+                sw.Start();
+                dt.Start();
                 puzzle.swapPositions(zeroPos, chosenTile);
                 AnimateTile(puzzle[zeroPos], dir, 1);
                 break;
@@ -184,6 +186,7 @@ namespace Puzzle_jigsaw
             puzzle.randomize();
             ChangeTilesPositions();
             clocktxtblock.Text = "00:00";
+            CounterLabel.Content = 0;
         }
         
         private void onclick(object sender, RoutedEventArgs e)
