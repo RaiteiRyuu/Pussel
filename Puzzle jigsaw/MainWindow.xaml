@@ -99,15 +99,15 @@
                 <Grid Height="50" VerticalAlignment="Top" Background="#FFD47330">
                 </Grid>
                 <TextBlock x:Name="CounterTextBlock" Text="Counter" Width="Auto" Height="Auto" HorizontalAlignment="Left" FontSize="22" Margin="10,160,0,410">
-                    
+
                 </TextBlock>
-                
+
                 <Label x:Name="CounterLabel" Style="{StaticResource LabelStyle}" BorderBrush="#D0C219" BorderThickness="1" Content="0" Width="Auto" FontSize="22" Background="White"  HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Height="36" />
             </Grid>
 
             <Border Opacity="0.6" Background="White" BorderThickness="2" BorderBrush="#FF000000" Height="400" Width="700" VerticalAlignment="Center" HorizontalAlignment="Center">
             </Border>
-            
+
 
 
             <Grid x:Name="PuzzleGrid"  Margin="115" Grid.Row="1" Grid.Column="1"  >
@@ -126,12 +126,12 @@
 
                 <!--<GridSplitter Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="SizeNS" Margin="0,-13">
                     <GridSplitter.Background >-->
-                        <!--<LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
+                <!--<LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
                             <GradientStop Offset="0.0" Color="#131413"/>
                             <GradientStop Offset="0.5" Color="#FFF0F0F0"/>
                             <GradientStop Offset="1.0" Color="#131413"/>
                         </LinearGradientBrush>-->
-                    <!--</GridSplitter.Background>
+                <!--</GridSplitter.Background>
                 </GridSplitter>-->
                 <Grid Grid.Column="2" Background="White" Margin="10,0,0,0">
                     <Canvas Name="imageCanvas" Width="300" Height="370">
@@ -381,11 +381,12 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-        
+
         <TextBlock x:Name="clocktxtblock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
         <Button x:Name="titlebtn" Margin="350,6,350,126" Background="White" Opacity="0.95" Content="The Puzzle Game" FontSize="20" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="37" ></Button>
         <Button x:Name="pausebtn" Margin="0,51,350,126" Background="White" Content="Pause" FontSize="15" Click="pausebtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85"></Button>
         <Button x:Name="restartbtn" Margin="0,84,350,126" Background="White" Content="Restart" FontSize="15" Click="restartbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85"></Button>
+
     </Grid>
-    
+
 </Window>

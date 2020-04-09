@@ -52,7 +52,7 @@ namespace Puzzle_jigsaw
             clocktxtblock.Text = "00:00";
 
             #region put tiles in a list
-            puzzle = new Puzzle(Puzzle.StartType.Normal, this);
+            puzzle = new Puzzle(Puzzle.StartType.Random, this);
 
             for (byte i = 0; i < 15; ++i)
             {
@@ -148,6 +148,7 @@ namespace Puzzle_jigsaw
                 puzzle.swapPositions(emptyTile, chosenTile);
                 TileMovementAnimation(puzzle[emptyTile], direction);
 
+
                 break;
             }
             
@@ -176,11 +177,12 @@ namespace Puzzle_jigsaw
         private void restartbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
-            clocktxtblock.Text = "00:00";
-            CounterLabel.Content = "0";
-            counter = 0;
             puzzle.shuffle();
             ChangeTilesPositions();
+            clocktxtblock.Text = "00:00";
+            counter = 0;
+            CounterLabel.Content = 0;
+
         }
         
         private void onclick(object sender, RoutedEventArgs e)

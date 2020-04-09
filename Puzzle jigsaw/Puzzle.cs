@@ -36,6 +36,7 @@ namespace Puzzle_jigsaw
         {
             this.winParent = parent;
                 shuffle();
+
         }
 
 
