@@ -166,7 +166,7 @@ namespace Puzzle_jigsaw
             }
         }
 
-        private void stopbtn_Click(object sender, RoutedEventArgs e)
+        private void pausebtn_Click(object sender, RoutedEventArgs e)
         {
             if (sw.IsRunning)
             {
@@ -174,13 +174,15 @@ namespace Puzzle_jigsaw
             }
         }
 
-        private void resetbtn_Click(object sender, RoutedEventArgs e)
+        private void restartbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
             puzzle.shuffle();
             ChangeTilesPositions();
             clocktxtblock.Text = "00:00";
+            counter = 0;
             CounterLabel.Content = 0;
+
         }
         
         private void onclick(object sender, RoutedEventArgs e)
