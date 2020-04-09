@@ -177,7 +177,7 @@ namespace Puzzle_jigsaw
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
-            puzzle.randomize();
+            puzzle.shuffle();
             ChangeTilesPositions();
             clocktxtblock.Text = "00:00";
             CounterLabel.Content = 0;
