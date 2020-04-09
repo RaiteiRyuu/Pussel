@@ -175,8 +175,12 @@ namespace Puzzle_jigsaw
 
         private void restartbtn_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.Application.Restart();
-            Application.Current.Shutdown();
+            sw.Reset();
+            clocktxtblock.Text = "00:00";
+            CounterLabel.Content = "0";
+            counter = 0;
+            puzzle.shuffle();
+            ChangeTilesPositions();
         }
         
         private void onclick(object sender, RoutedEventArgs e)
