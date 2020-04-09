@@ -384,8 +384,8 @@
         
         <TextBlock x:Name="clocktxtblock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
         <Button x:Name="titlebtn" Margin="350,6,350,126" Background="White" Opacity="0.95" Content="The Puzzle Game" FontSize="20" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Height="37" ></Button>
-        <Button x:Name="stopbtn" Margin="0,51,350,126" Background="White" Content="Stop" FontSize="15" Click="stopbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80"></Button>
-        <Button x:Name="restartbtn" Margin="0,84,350,126" Background="White" Content="Restart" FontSize="15" Click="restartbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80"></Button>
+        <Button x:Name="pausebtn" Margin="0,51,350,126" Background="White" Content="Pause" FontSize="15" Click="pausebtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85"></Button>
+        <Button x:Name="restartbtn" Margin="0,84,350,126" Background="White" Content="Restart" FontSize="15" Click="restartbtn_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85"></Button>
     </Grid>
     
 </Window>

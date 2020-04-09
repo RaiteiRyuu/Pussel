@@ -165,7 +165,7 @@ namespace Puzzle_jigsaw
             }
         }
 
-        private void stopbtn_Click(object sender, RoutedEventArgs e)
+        private void pausebtn_Click(object sender, RoutedEventArgs e)
         {
             if (sw.IsRunning)
             {
