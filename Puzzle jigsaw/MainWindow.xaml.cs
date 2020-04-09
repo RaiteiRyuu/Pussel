@@ -36,15 +36,16 @@ namespace Puzzle_jigsaw
         public static byte[,] puzzleMatrix = new byte[4, 4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 }, { 12, 13, 14, 15 } };
         private Image[] tiles = new Image[16];
         private Image[] referencePuzzle = new Image[16];
+
         private Puzzle puzzle;
 
         private delegate void EmptyDelegate();
 
         #endregion
 
-        
-
+ 
         #region Main constructor
+        //Constructs the main window
         public MainWindow()
         {
             counter = 0;
@@ -59,6 +60,8 @@ namespace Puzzle_jigsaw
             clocktxtblock.Text = "00:00";
 
             #region put tiles in a list
+
+            //Put image tiles in an array   
             puzzle = new Puzzle(Puzzle.StartType.Random, this);
 
             for (byte i = 0; i < 15; ++i)
@@ -72,23 +75,28 @@ namespace Puzzle_jigsaw
                 tiles[i].Width = puzzleCanvas.Width / 4.27;
                 tiles[i].Height = puzzleCanvas.Height / 4.27;
                 puzzleCanvas.Children.Add(tiles[i]);
-                referencePuzzle[i] = new Image();
+                referencePuzzle[i] = new Image();              
             }
+            
             ChangeTilesPositions();
             #endregion
         }
         #endregion
+
+        #region methods
 
         public void DoEvents()
         {
             Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, new EmptyDelegate(delegate { }));
         }
 
+        //compare image array with reference array
         public static bool checkIfFinished<T>(T[] tiles, T[] referencePuzzle)
         {
             return tiles.SequenceEqual(referencePuzzle);
         }
 
+        //Positions the tiles on the canvas
         public void ChangeTilesPositions()
         {
             for (byte i = 0; i < 16; ++i)
@@ -100,6 +108,7 @@ namespace Puzzle_jigsaw
             }
         }
 
+        //Moves the tile
         public void MoveTile(int num, int direction)
         {
             /* dir 0 = left
@@ -131,6 +140,8 @@ namespace Puzzle_jigsaw
 
         }
 
+        //Checks if the puzzle is finished. Triggers a message box when puzzle is done, with either to close
+        //the application or start a new game.
         private void puzzleFinished()
         {
             if (checkIfFinished(tiles, referencePuzzle))
@@ -138,7 +149,7 @@ namespace Puzzle_jigsaw
                 sw.Stop();
 
                 string message = "Congratulations! Your finishing time is: " + currentTime;
-                string caption = "Retry?";
+                string caption = "You wanna puzzle again?";
 
                 MessageBoxButton buttons = MessageBoxButton.YesNo;
 
@@ -153,9 +164,14 @@ namespace Puzzle_jigsaw
                         Application.Current.Shutdown();
                         break;
                 }
-            }            
+            }
+            else
+            {
+                return;
+            }
         }
 
+        //Animates the moving tile
         private void TileMovementAnimation(int num, int direction)
         {
             int pixelation = (int)Math.Floor((tileSize + tileOffset) / movementSpeed);
@@ -167,6 +183,7 @@ namespace Puzzle_jigsaw
             }
         }
 
+        //Triggers the tile to move to an empty space on click
         private void MoveTileOnClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
@@ -194,7 +211,7 @@ namespace Puzzle_jigsaw
 
         }
 
-
+        //Tracking time
         void dt_Tick(object sender, EventArgs e)
         {
             if (sw.IsRunning)
@@ -206,6 +223,7 @@ namespace Puzzle_jigsaw
             }
         }
 
+        //Pauses the time/game
         private void pausebtn_Click(object sender, RoutedEventArgs e)
         {
             if (sw.IsRunning)
@@ -214,6 +232,7 @@ namespace Puzzle_jigsaw
             }
         }
 
+        //A button for restarting a new puzzle
         private void restartbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
@@ -222,12 +241,11 @@ namespace Puzzle_jigsaw
             clocktxtblock.Text = "00:00";
             counter = 0;
             CounterLabel.Content = 0;
-
         }
 
+        //Shows a review of the image
         private void onclick(object sender, RoutedEventArgs e)
         {
-
             Image img = new Image();
             img.Source = new BitmapImage(new Uri("Image/Cute_Cat.jpg", UriKind.Relative));
             img.Width = imageCanvas.Width;
@@ -237,6 +255,7 @@ namespace Puzzle_jigsaw
 
         }
 
+        //Highlights the items in the list
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             //ToolTip visibility
@@ -252,38 +271,23 @@ namespace Puzzle_jigsaw
             }
         }
 
+
+        //For future coding. Supposed to give a choice of number of tiles.
         private void mouseclick(object sender, MouseButtonEventArgs e)
         {
             Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
             popupPuzzleWindow.Show();
         }
 
-
+        //Closes the application
         private void Close(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        //private void clickOnFull_Image(object sender, MouseButtonEventArgs e)
-        //{
-        //    //OpenFileDialog open_File = new OpenFileDialog();
-        //    //open_File.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-        //    popupFullImageWindow.Show();
-        //    Image img = new Image();
-        //    img.Source = new BitmapImage(new Uri("Image/Cute_Cat.jpg", UriKind.Relative));
-        //    img.Width = popupFullImageWindow.Width;
-        //    img.Height = popupFullImageWindow.Height;
-        //    popupFullImageWindow.FullImageImage.Source = img.Source;
-        //}
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        //Opens up a combobox with backgrounds
         private void chooseBackground_click(object sender, MouseButtonEventArgs e)
-        {
-            //opens up a combobox with backgrounds
+        {           
             backgroundCombobox = new Backgrounds();
         }
 
@@ -303,6 +307,7 @@ namespace Puzzle_jigsaw
         {
             CounterLabel.Content = counter.ToString();
         }
+        #endregion
     }
 
     public enum ViewMode

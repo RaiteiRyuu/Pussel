@@ -10,9 +10,14 @@ namespace Puzzle_jigsaw
 {
     public partial class Backgrounds : INotifyPropertyChanged
     {
+        #region fields
         //class for creating a background
         private Brush selectedBackground;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public IEnumerable<Brush> BackgroundOptions { get; }
+        #endregion
 
+        #region constructor
         public Backgrounds()
         {
             //Show all the background alternatives in the combobox as a list.
@@ -28,9 +33,9 @@ namespace Puzzle_jigsaw
             BackgroundOptions = brushes;
             SelectedBackground = BackgroundOptions.FirstOrDefault();
         }
+        #endregion
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public IEnumerable<Brush> BackgroundOptions { get; }
+        #region access modifers
 
         public Brush SelectedBackground
         {
@@ -42,6 +47,7 @@ namespace Puzzle_jigsaw
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedBackground)));
             }
         }
+        #endregion 
 
     }
 }
