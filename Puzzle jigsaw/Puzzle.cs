@@ -78,15 +78,15 @@ namespace Puzzle_jigsaw
             
         }
 
-        private void startPos()
-        {           
-            for (byte i = 0; i < 16; ++i)
-                puzzleArray[i] = i;
-        }
-
 
 
        //Behövs detta här under? Vad gör det ens?
+
+        //private void startPos()
+        //{           
+        //    for (byte i = 0; i < 16; ++i)
+        //        puzzleArray[i] = i;
+        //}
 
         //static public int zeroPos(ref int[] puz)
         //{

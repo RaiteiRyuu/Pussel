@@ -9,6 +9,10 @@ using System.Windows.Threading;
 using System.IO;
 using Path = System.IO.Path;
 using System.Threading;
+using System.Linq;
+
+using MessageBox = System.Windows.MessageBox;
+
 
 namespace Puzzle_jigsaw
 {
@@ -30,12 +34,15 @@ namespace Puzzle_jigsaw
         //public bool movingTile = false;
 
         public static byte[,] puzzleMatrix = new byte[4, 4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 }, { 12, 13, 14, 15 } };
-        private Image[] tiles = new Image[15];
+        private Image[] tiles = new Image[16];
+        private Image[] referencePuzzle = new Image[16];
         private Puzzle puzzle;
 
         private delegate void EmptyDelegate();
 
         #endregion
+
+        
 
         #region Main constructor
         public MainWindow()
@@ -62,9 +69,10 @@ namespace Puzzle_jigsaw
                 temp.EndInit();
                 tiles[i] = new Image();
                 tiles[i].Source = temp;
-                tiles[i].Width = puzzleCanvas.Width /4.27;
-                tiles[i].Height = puzzleCanvas.Height/ 4.27;
+                tiles[i].Width = puzzleCanvas.Width / 4.27;
+                tiles[i].Height = puzzleCanvas.Height / 4.27;
                 puzzleCanvas.Children.Add(tiles[i]);
+                referencePuzzle[i] = new Image();
             }
             ChangeTilesPositions();
             #endregion
@@ -74,6 +82,11 @@ namespace Puzzle_jigsaw
         public void DoEvents()
         {
             Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, new EmptyDelegate(delegate { }));
+        }
+
+        public static bool checkIfFinished<T>(T[] tiles, T[] referencePuzzle)
+        {
+            return tiles.SequenceEqual(referencePuzzle);
         }
 
         public void ChangeTilesPositions()
@@ -114,6 +127,33 @@ namespace Puzzle_jigsaw
                 default:
                     break;
             }
+            puzzleFinished();
+
+        }
+
+        private void puzzleFinished()
+        {
+            if (checkIfFinished(tiles, referencePuzzle))
+            {
+                sw.Stop();
+
+                string message = "Congratulations! Your finishing time is: " + currentTime;
+                string caption = "Retry?";
+
+                MessageBoxButton buttons = MessageBoxButton.YesNo;
+
+                MessageBoxResult result = MessageBox.Show(message, caption, buttons);
+
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        MainWindow main = new MainWindow();
+                        break;
+                    case MessageBoxResult.No:
+                        Application.Current.Shutdown();
+                        break;
+                }
+            }            
         }
 
         private void TileMovementAnimation(int num, int direction)
@@ -129,7 +169,7 @@ namespace Puzzle_jigsaw
 
         private void MoveTileOnClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            
+
             Point mousePosition = Mouse.GetPosition(puzzleCanvas);
             byte x = (byte)Math.Floor(mousePosition.X / (tileSize + tileOffset));
             byte y = (byte)Math.Floor(mousePosition.Y / (tileSize + tileOffset));
@@ -151,7 +191,7 @@ namespace Puzzle_jigsaw
 
                 break;
             }
-            
+
         }
 
 
@@ -184,19 +224,19 @@ namespace Puzzle_jigsaw
             CounterLabel.Content = 0;
 
         }
-        
+
         private void onclick(object sender, RoutedEventArgs e)
         {
-     
+
             Image img = new Image();
             img.Source = new BitmapImage(new Uri("Image/Cute_Cat.jpg", UriKind.Relative));
             img.Width = imageCanvas.Width;
             img.Height = imageCanvas.Height;
             imageCanvas.Children.Add(img);
             popupFullImageWindow.FullImageImage.Source = img.Source;
-           
+
         }
-        
+
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             //ToolTip visibility
@@ -211,7 +251,7 @@ namespace Puzzle_jigsaw
                 tt_Folder.Visibility = Visibility.Visible;
             }
         }
-        
+
         private void mouseclick(object sender, MouseButtonEventArgs e)
         {
             Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
@@ -235,7 +275,7 @@ namespace Puzzle_jigsaw
         //    img.Height = popupFullImageWindow.Height;
         //    popupFullImageWindow.FullImageImage.Source = img.Source;
         //}
-        
+
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
 
@@ -246,7 +286,7 @@ namespace Puzzle_jigsaw
             //opens up a combobox with backgrounds
             backgroundCombobox = new Backgrounds();
         }
-        
+
         private void savePuzzle(object sender, MouseButtonEventArgs e)
         {
             string path = Path.GetTempFileName();
@@ -258,14 +298,14 @@ namespace Puzzle_jigsaw
                 file.CopyTo(saveGame.FileName);
             }
         }
-        
+
         private void ClickInCanvasGrid(object sender, MouseButtonEventArgs e)
         {
             CounterLabel.Content = counter.ToString();
         }
     }
 
-        public enum ViewMode
+    public enum ViewMode
     {
         Picture,
         Puzzle
