@@ -173,10 +173,11 @@ namespace Puzzle_jigsaw
             }
         }
 
-        private void resetbtn_Click(object sender, RoutedEventArgs e)
+        private void restartbtn_Click(object sender, RoutedEventArgs e)
         {
-            sw.Reset();
-            clocktxtblock.Text = "00:00";
+            // from System.Windows.Forms.dll
+            System.Windows.Forms.Application.Restart();
+            Application.Current.Shutdown();
         }
         
         private void onclick(object sender, RoutedEventArgs e)
