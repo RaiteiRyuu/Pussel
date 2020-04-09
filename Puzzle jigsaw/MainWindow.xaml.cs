@@ -175,7 +175,6 @@ namespace Puzzle_jigsaw
 
         private void restartbtn_Click(object sender, RoutedEventArgs e)
         {
-            // from System.Windows.Forms.dll
             System.Windows.Forms.Application.Restart();
             Application.Current.Shutdown();
         }
