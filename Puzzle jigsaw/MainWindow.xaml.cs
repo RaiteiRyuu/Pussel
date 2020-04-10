@@ -200,17 +200,12 @@ namespace Puzzle_jigsaw
                     continue;
 
                 counter++;
-
                 sw.Start();
                 dt.Start();
-
                 puzzle.swapPositions(emptyTile, chosenTile);
                 TileMovementAnimation(puzzle[emptyTile], direction);
-
-
                 break;
             }
-
         }
 
         //Tracking time
@@ -254,7 +249,6 @@ namespace Puzzle_jigsaw
             img.Height = imageCanvas.Height;
             imageCanvas.Children.Add(img);
             popupFullImageWindow.FullImageImage.Source = img.Source;
-
         }
 
         //Highlights the items in the list
