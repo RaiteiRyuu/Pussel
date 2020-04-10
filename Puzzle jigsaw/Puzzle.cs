@@ -40,7 +40,10 @@ namespace Puzzle_jigsaw
             get { return puzzleArray[index]; }
         }
 
-        //Generic function for swapping tiles
+        /*Generic function for swapping tiles
+        Para: a, b
+        Return: None
+        */
         public static void swap<T>(ref T a, ref T b)
         {
             T tmp = a;
@@ -48,7 +51,10 @@ namespace Puzzle_jigsaw
             b = tmp;
         }
 
-        //position swap
+        /*position swap
+        Para: pos1, pos2
+        Return: None
+        */
         public void swapPositions(int pos1, int pos2)
         {
             int tmp = puzzleArray[pos1];
@@ -56,7 +62,10 @@ namespace Puzzle_jigsaw
             puzzleArray[pos2] = tmp;
         }
 
-        //Shuffles the tiles
+        /*huffles the tiles
+        Para: None
+        Return: None
+        */
         public void shuffle()
         {
             Random rand = new Random();

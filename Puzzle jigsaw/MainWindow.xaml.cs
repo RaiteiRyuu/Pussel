@@ -99,7 +99,10 @@ namespace Puzzle_jigsaw
             return tiles.SequenceEqual(referencePuzzle);
         }
 
-        //Positions the tiles on the canvas
+        /*Positions the tiles on the canvas
+        Para: None
+        Return: None
+        */
         public void ChangeTilesPositions()
         {
             for (byte i = 0; i < 16; ++i)
@@ -111,7 +114,10 @@ namespace Puzzle_jigsaw
             }
         }
 
-        //Moves the tile
+        /*Moves the tile
+        Para: num, direction
+        Return: None
+        */
         public void MoveTile(int num, int direction)
         {
             /* dir 0 = left
@@ -142,8 +148,11 @@ namespace Puzzle_jigsaw
             puzzleFinished();
         }
 
-        //Checks if the puzzle is finished. Triggers a message box when puzzle is done, with either to close
-        //the application or start a new game.
+        /*Checks if the puzzle is finished. Triggers a message box when puzzle is done, with either to close
+        the application or start a new game.
+        Para: None
+        Return: None
+            */
         private void puzzleFinished()
         {
             if (checkIfFinished(tiles, referencePuzzle))
@@ -174,6 +183,7 @@ namespace Puzzle_jigsaw
 
         /*Animates the moving tile
         Para: num = chosen tile, direction = which direction of movement as an int
+        Return: None
         */
         private void TileMovementAnimation(int num, int direction)
         {
@@ -186,7 +196,10 @@ namespace Puzzle_jigsaw
             }
         }
 
-        //Triggers the tile to move to an empty space on click
+        /*Triggers the tile to move to an empty space on click
+         Para: mouse event onclick
+         Return: None
+         */ 
         private void MoveTileOnClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Point mousePosition = Mouse.GetPosition(puzzleCanvas);
@@ -208,7 +221,10 @@ namespace Puzzle_jigsaw
             }
         }
 
-        //Tracking time
+        /*Tracking time
+         Para: eventargument
+         Return: None
+         */
         void dt_Tick(object sender, EventArgs e)
         {
             if (sw.IsRunning)
@@ -220,7 +236,10 @@ namespace Puzzle_jigsaw
             }
         }
 
-        //Pauses the time/game
+        /*Pauses the time/game
+         Para: Eventarugment click on button
+         Return: None
+         */
         private void pausebtn_Click(object sender, RoutedEventArgs e)
         {
             if (sw.IsRunning)
@@ -229,7 +248,10 @@ namespace Puzzle_jigsaw
             }
         }
 
-        //A button for restarting a new puzzle
+        /*A button for restarting a new puzzle
+         Para: Eventargument click on button
+         Return: None
+         */
         private void restartbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
@@ -240,7 +262,10 @@ namespace Puzzle_jigsaw
             CounterLabel.Content = 0;
         }
 
-        //Shows a review of the image
+        /*Shows a preview of the image
+        Para: Eventargument clock on button
+        Return: None
+         */
         private void onclick(object sender, RoutedEventArgs e)
         {
             Image img = new Image();
@@ -251,7 +276,10 @@ namespace Puzzle_jigsaw
             popupFullImageWindow.FullImageImage.Source = img.Source;
         }
 
-        //Highlights the items in the list
+        /*Highlights the items in the list
+        Para: Event mouse enter ListViewItem
+        Return: None
+         */
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             //ToolTip visibility
@@ -267,8 +295,10 @@ namespace Puzzle_jigsaw
             }
         }
 
-
-        //For future coding. Supposed to give a choice of number of tiles.
+        /*For future coding. Supposed to give a choice of number of tiles.
+         Para: event on click button
+         Return: None
+         */
         private void mouseclick(object sender, MouseButtonEventArgs e)
         {
             Puzzle_Pieces popupPuzzleWindow = new Puzzle_Pieces();
