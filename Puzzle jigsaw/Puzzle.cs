@@ -4,6 +4,14 @@ namespace Puzzle_jigsaw
 {
     class Puzzle
     {
+        /*----------------------------------------------------------------*/
+        /*                                                                */
+        /*                                                                */
+        /* Our Puzzle class is based on the Puzzle class from 15 Puzzles  */
+        /* since we had trouble with puzzle image cutting / loading       */
+        /*                                                                */
+        /*                                                                */
+        /*----------------------------------------------------------------*/
         public enum StartType
         {
             Normal,

@@ -62,6 +62,7 @@ namespace Puzzle_jigsaw
             #region put tiles in a list
 
             //Put image tiles in an array   
+            // Method: 15 Puzzles
             puzzle = new Puzzle(Puzzle.StartType.Random, this);
 
             for (byte i = 0; i < 15; ++i)
@@ -85,6 +86,7 @@ namespace Puzzle_jigsaw
 
         #region methods
 
+        //Method: 15 Puzzles
         public void DoEvents()
         {
             Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, new EmptyDelegate(delegate { }));
@@ -102,7 +104,8 @@ namespace Puzzle_jigsaw
         /*Positions the tiles on the canvas
         Para: None
         Return: None
-        */
+        Method: 15 Puzzles
+             */
         public void ChangeTilesPositions()
         {
             for (byte i = 0; i < 16; ++i)
@@ -117,7 +120,8 @@ namespace Puzzle_jigsaw
         /*Moves the tile
         Para: num, direction
         Return: None
-        */
+        Method: 15 Puzzles
+            */
         public void MoveTile(int num, int direction)
         {
             /* dir 0 = left
@@ -184,6 +188,7 @@ namespace Puzzle_jigsaw
         /*Animates the moving tile
         Para: num = chosen tile, direction = which direction of movement as an int
         Return: None
+        Method: 15 Puzzles
         */
         private void TileMovementAnimation(int num, int direction)
         {
@@ -199,7 +204,8 @@ namespace Puzzle_jigsaw
         /*Triggers the tile to move to an empty space on click
          Para: mouse event onclick
          Return: None
-         */ 
+         Method: 15 Puzzles
+            */ 
         private void MoveTileOnClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Point mousePosition = Mouse.GetPosition(puzzleCanvas);
