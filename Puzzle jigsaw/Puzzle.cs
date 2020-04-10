@@ -28,19 +28,19 @@ namespace Puzzle_jigsaw
         {
             this.winParent = parent;
                 shuffle();
-
         }
         #endregion
 
 
         #region methods
-        //check indexes and swaps them
 
+        //check indexes and swaps them
         public int this[int index]
         {
             get { return puzzleArray[index]; }
         }
 
+        //Generic function for swapping tiles
         public static void swap<T>(ref T a, ref T b)
         {
             T tmp = a;
@@ -48,6 +48,7 @@ namespace Puzzle_jigsaw
             b = tmp;
         }
 
+        //position swap
         public void swapPositions(int pos1, int pos2)
         {
             int tmp = puzzleArray[pos1];
@@ -55,13 +56,10 @@ namespace Puzzle_jigsaw
             puzzleArray[pos2] = tmp;
         }
 
-
         //Shuffles the tiles
         public void shuffle()
         {
             Random rand = new Random();
-
-            
             for (int i = 0; i < 16; ++i)
             {
                 puzzleArray[i] = i;
@@ -69,11 +67,8 @@ namespace Puzzle_jigsaw
             for (int i = 16; i > 1; i--)
             {
                 swap<int>(ref puzzleArray[i - 1], ref puzzleArray[rand.Next(i)]);
-
             }
-            
         }
         #endregion
-
     }
 }

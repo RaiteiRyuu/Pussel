@@ -90,7 +90,10 @@ namespace Puzzle_jigsaw
             Dispatcher.CurrentDispatcher.Invoke(DispatcherPriority.Background, new EmptyDelegate(delegate { }));
         }
 
-        //compare image array with reference array
+        /*compare image array with reference array
+        Para: 2 Array of tiles
+        Return: boolean value
+         */
         public static bool checkIfFinished<T>(T[] tiles, T[] referencePuzzle)
         {
             return tiles.SequenceEqual(referencePuzzle);
@@ -137,7 +140,6 @@ namespace Puzzle_jigsaw
                     break;
             }
             puzzleFinished();
-
         }
 
         //Checks if the puzzle is finished. Triggers a message box when puzzle is done, with either to close
@@ -152,7 +154,6 @@ namespace Puzzle_jigsaw
                 string caption = "You wanna puzzle again?";
 
                 MessageBoxButton buttons = MessageBoxButton.YesNo;
-
                 MessageBoxResult result = MessageBox.Show(message, caption, buttons);
 
                 switch (result)
@@ -171,7 +172,9 @@ namespace Puzzle_jigsaw
             }
         }
 
-        //Animates the moving tile
+        /*Animates the moving tile
+        Para: num = chosen tile, direction = which direction of movement as an int
+        */
         private void TileMovementAnimation(int num, int direction)
         {
             int pixelation = (int)Math.Floor((tileSize + tileOffset) / movementSpeed);
@@ -186,7 +189,6 @@ namespace Puzzle_jigsaw
         //Triggers the tile to move to an empty space on click
         private void MoveTileOnClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
             Point mousePosition = Mouse.GetPosition(puzzleCanvas);
             byte x = (byte)Math.Floor(mousePosition.X / (tileSize + tileOffset));
             byte y = (byte)Math.Floor(mousePosition.Y / (tileSize + tileOffset));
@@ -291,6 +293,7 @@ namespace Puzzle_jigsaw
             backgroundCombobox = new Backgrounds();
         }
 
+        // Not fully developed saving feature of the game
         private void savePuzzle(object sender, MouseButtonEventArgs e)
         {
             string path = Path.GetTempFileName();
@@ -303,6 +306,7 @@ namespace Puzzle_jigsaw
             }
         }
 
+        // Display of counter increase
         private void ClickInCanvasGrid(object sender, MouseButtonEventArgs e)
         {
             CounterLabel.Content = counter.ToString();
